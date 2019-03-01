@@ -52,6 +52,13 @@ class GameDetailsTest {
         GameDetails.getGamedetails().IntializePlayers(0);
         GameDetails.getGamedetails().IntializePlayers(1);
         GameDetails.getGamedetails().IntializePlayers(2);
+        
+        GameDetails.getGamedetails().InitializeArmies(0);
+        GameDetails.getGamedetails().InitializeArmies(1);
+        GameDetails.getGamedetails().InitializeArmies(2);
+
+        GameDetails.getGamedetails().distributeArmies(0);
+        GameDetails.getGamedetails().distributeArmies(1);
     }
 
     @Test

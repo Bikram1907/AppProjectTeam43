@@ -8,6 +8,9 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests the GameDetails class methods.
+ */
 class GameDetailsTest {
 
     private File validfile;
@@ -19,7 +22,9 @@ class GameDetailsTest {
     private HashMap<String,String> playerCharacters = new HashMap<String,String>();
     private int noofarmiesofPlayers;
 
-
+    /**
+     * This method setups the initial objects need to test the methods.
+     */
     @BeforeEach
     void setUp() {
 
@@ -61,6 +66,9 @@ class GameDetailsTest {
         GameDetails.getGamedetails().distributeArmies(1);
     }
 
+    /**
+     * This method checks the map validation.
+     */
     @Test
     void validateMap() {
 
@@ -74,6 +82,9 @@ class GameDetailsTest {
         assertFalse(GameDetails.getGamedetails().validateMap(2));
     }
 
+    /**
+     * This method test if the armies are distributed properly or not.
+     */
     @Test
     void distributeArmies() {
 
@@ -85,6 +96,9 @@ class GameDetailsTest {
 
     }
 
+    /**
+     * This method setups the players characters.
+     */
     void setPlayerCharacters() {
 
         playerCharacters.put("Player1","Human");

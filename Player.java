@@ -147,5 +147,47 @@ public class Player {
      * returns if the player is knocked out or not.
      * @return
      */
+    public Boolean getKnocked() {
+        return isKnocked;
+    }
 
+    /**
+     * returns the players character.
+     * @return
+     */
+    public String getPlayerCharacter() {
+        return playerCharacter;
+    }
+
+    /**
+     * returns players color.
+     * @return
+     */
+    public Color getPlayerColor() {
+        return playerColor;
+    }
+
+    /**
+     * returns the number of cards players held.
+     * @return
+     */
+    public int getCardsHolded() {
+        return cardsHolded;
+    }
+
+    /**
+     * returns the territories player held.
+     * @return
+     */
+    public HashMap<String, Territories> getTerritoriesHeld() {
+        return territoriesHeld;
+    }
+
+    /**
+     * returns the continents player held.
+     * @return
+     */
+    public HashMap<String, Continent> getContinentHeld() {
+        return continentHeld;
+    }
 }

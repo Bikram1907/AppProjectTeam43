@@ -77,9 +77,11 @@ class GameDetailsTest {
     @Test
     void distributeArmies() {
 
-        GameDetails.getGamedetails().distributeArmies(0);
         noofarmiesofPlayers = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getPlayerArmies();
         assertEquals(20,noofarmiesofPlayers);
+        
+        noofarmiesofPlayers = GameDetails.getGamedetails().getgamedetails().get(1).getPlayersList().get(0).getPlayerArmies();
+        assertEquals(25,noofarmiesofPlayers);
 
     }
 

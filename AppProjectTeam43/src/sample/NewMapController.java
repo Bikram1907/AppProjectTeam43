@@ -55,4 +55,77 @@ public class NewMapController {
 
         mapformatTextarea.setText(mapInstruction);
     }
+
+    /**
+     * To save the contents from the text area and verify whether it is valid map or not.
+     */
+    public void saveButtonAction() {
+
+        // If text area is not empty then read the contents to the file and check map is valid or not.
+        if(!newmapTextarea.getText().trim().isEmpty()) {
+            File file = new File("NewMap.map");
+
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+                writer.write(newmapTextarea.getText());
+                writer.flush();
+                writer.close();
+
+                boolean result = meController.ismapValid(file,"NEWMAP");
+
+                if(result) {
+                    // Check if the map name is empty. If empty then give some default name.
+                    if(mapnameTextfield.getText().trim().isEmpty()) {
+                        fileName = "NewMap"+count;
+                        count++;
+                    } else {
+                        fileName = mapnameTextfield.getText().trim();
+                    }
+
+                    // Create file and write the map contents to the file and store.
+                    Path path = Paths.get(filePath+fileName+".map");
+                    try {
+                        writer = Files.newBufferedWriter(path);
+                        writer.write(newmapTextarea.getText());
+                        writer.flush();
+
+                        System.out.println("Map is valid. Successfully saved the map.\nMap saved location foldername =" +
+                                          " Modifiedmaps");
+                    } finally {
+                        if(writer != null) {
+                            writer.close();
+                            cancelButtonAction();
+                        }
+                    }
+                } else {
+                    System.out.println("Map is not valid. Please check the continents and territories and try again.");
+
+                    // Clear the data.
+                    GameDetails.getGamedetails().clearData();
+
+                    // Close the window.
+                    cancelButtonAction();
+                }
+
+            } catch (Exception e) {
+                System.out.println("Cannot write the contents to the file.");
+                e.printStackTrace();
+                return;
+            }
+        } else {
+            System.out.println("Text area is empty.\nCannot validate the map.\nError.");
+            cancelButtonAction();
+        }
+    }
+
+    /**
+     * To cancel the new map window.
+     */
+    public void cancelButtonAction() {
+
+        Stage stage = (Stage) newmapCancelbutton.getScene().getWindow();
+        stage.close();
+    }
+
 }

@@ -48,4 +48,48 @@ public class Territories {
         this.continentName = continentName;
         this.adjacentTerritories = adjacentTerritories;
     }
+    
+    /**
+     * To set the territorie name.
+     * @param territorieName
+     */
+    public void setTerritorieName(String territorieName) {
+        this.territorieName = territorieName;
+    }
+
+    /**
+     * To set x-coordinate of the territorie.
+     * @param x_Position
+     */
+    public void setX_Position(int x_Position) {
+        this.x_Position = x_Position;
+    }
+
+    /**
+     * To set y-coordinate of the territorie.
+     * @param y_Position
+     */
+    public void setY_Position(int y_Position) {
+        this.y_Position = y_Position;
+    }
+
+    /**
+     * To set the number of armies.
+     * @param armiesHeld
+     */
+    public void setArmiesHeld(int armiesHeld) {
+        this.armiesHeld = armiesHeld;
+    }
+
+    public void setHasPlayer(Boolean hasPlayer) {
+        this.hasPlayer = hasPlayer;
+    }
+
+    /**
+     * Set the player occupied the territorie.
+     * @param player
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }

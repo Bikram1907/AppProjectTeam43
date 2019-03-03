@@ -9,6 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * This class tests the LoadgameController class methods.
  */
 class LoadgameControllerTest {
+   
+    private File mapfile;
+    private HashMap<String,String> playerCharacters = new HashMap<String,String>();
+    private LoadgameController lgcObject = new LoadgameController();
 
     **
      * This method sets the objects that are needed to test the methods.

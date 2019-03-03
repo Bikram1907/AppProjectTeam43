@@ -125,4 +125,64 @@ public class Territories {
         return x_Position;
     }
 
+    /**
+     * get the y-coordinate.
+     * @return
+     */
+    public int getY_Position() {
+        return y_Position;
+    }
+
+    /**
+     * get the number of armies held by the territorie.
+     * @return
+     */
+    public int getArmiesHeld() {
+        return armiesHeld;
+    }
+
+    /**
+     * return true if the territorie has a player.
+     * @return
+     */
+    public Boolean getHasPlayer() {
+        return hasPlayer;
+    }
+
+    /**
+     * return the player occupied the territorie.
+     * @return
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * return the adjacent territories.
+     * @return
+     */
+    public ArrayList<String> getAdjacentTerritories() {
+        return adjacentTerritories;
+    }
+
+    /**
+     * To return the continent name.
+     * @return
+     */
+    public String getContinentName() {
+        return continentName;
+    }
+
+    /**
+     * To increament the army count by 1.
+     */
+    public void increamentarmyCountby1() {
+        armiesHeld += 1;
+    }
+
+    public void decreamentarmyCountby1() {
+        armiesHeld -= 1;
+    }
+
 }
+

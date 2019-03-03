@@ -27,11 +27,7 @@ class LoadgameControllerTest {
     @Test
     void mouseclicked() {
     }
-
-    @Test
-    void finishedMove() {
-    }
-
+   
     /**
      * This method tests the if the reinforcement armies are calculated properly or not.
      */

@@ -190,4 +190,50 @@ public class Player {
     public HashMap<String, Continent> getContinentHeld() {
         return continentHeld;
     }
+    /**
+     * To return the player Id.
+     * @return
+     */
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    /**
+     * Overrides the method toString() method.
+     * @return
+     */
+    @Override
+    public String toString() {
+        return playerName;
+    }
+
+    /**
+     * To increament player army count by 1.
+     */
+    public void increamentArmycountby1() {
+        playerArmies += 1;
+    }
+
+    /**
+     * To decreament player army count by 1.
+     */
+    public void decreamentArmycountby1() {
+        playerArmies -= 1;
+    }
+
+    /**
+     * To increase army count by some value.
+     * @param value
+     */
+    public void increaseArmyCountByValue(int value) {
+        playerArmies += value;
+    }
+
+    /**
+     * To decrease army count by some value.
+     * @param value
+     */
+    public void decreaseArmyCountByValue(int value) {
+        playerArmies -= value;
+    }
 }

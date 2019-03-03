@@ -7,11 +7,17 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests the NewMapController class methods.
+ */
 class NewMapControllerTest {
 
     private File validfile;
     private File invalidfile;
 
+    /**
+     * This method sets the objects needed to test the methods.
+     */
     @BeforeEach
     void setUp() {
 
@@ -22,6 +28,9 @@ class NewMapControllerTest {
         GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"NEWMAP"));
     }
 
+    /**
+     * This method tests whether new map is valid or not.
+     */
     @Test
     void saveButtonAction() {
 

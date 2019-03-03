@@ -108,5 +108,30 @@ public class MapEditorController {
             return;
         }
     }
+    
+    /**
+     * To close the Map editor window.
+     */
+    public void cancelAction() {
+
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        GameDetails.getGamedetails().getgamedetails().clear();
+        stage.close();
+    }
+
+    public boolean ismapValid(File file, String typename) {
+
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(file, typename));
+
+        // To get the index of the Game details object of type map editor.
+        int index = controller.returnIndex(typename);
+
+        GameDetails.getGamedetails().getgamedetails().get(index).createMap(index);
+        boolean result = GameDetails.getGamedetails().getgamedetails().get(index).validateMap(index);
+        System.out.println("Is Map Valid function result is = " + result);
+
+        return result;
+    }
 }
+
     

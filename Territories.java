@@ -92,4 +92,37 @@ public class Territories {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    /**
+     * set the adjacent territories.
+     * @param adjacentTerritories
+     */
+    public void setAdjacentTerritories(ArrayList<String> adjacentTerritories) {
+        this.adjacentTerritories = adjacentTerritories;
+    }
+
+    /**
+     * To set the continent name.
+     * @param continentName
+     */
+    public void setContinentName(String continentName) {
+        this.continentName = continentName;
+    }
+
+    /**
+     * get the territorie name.
+     * @return
+     */
+    public String getTerritorieName() {
+        return territorieName;
+    }
+
+    /**
+     * get the x-coordinate.
+     * @return
+     */
+    public int getX_Position() {
+        return x_Position;
+    }
+
 }

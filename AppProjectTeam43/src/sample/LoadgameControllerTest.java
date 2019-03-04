@@ -19,6 +19,20 @@ class LoadgameControllerTest {
      */
     @BeforeEach
     void setUp() {
+       
+       setPlayerCharacters();
+        mapfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\World.map");
+        GameDetails gameObject = new GameDetails(6,mapfile,playerCharacters,"NEWGAME");
+        GameDetails.getGamedetails().getgamedetails().add(gameObject);
+        GameDetails.getGamedetails().createMap(0);
+        boolean result = GameDetails.getGamedetails().validateMap(0);
+        GameDetails.getGamedetails().IntializeColors(0);
+        GameDetails.getGamedetails().IntializePlayers(0);
+        GameDetails.getGamedetails().InitializeArmies(0);
+        GameDetails.getGamedetails().distributeArmies(0);
+        GameDetails.getGamedetails().distributeTerritories(0);
+        GameDetails.getGamedetails().distributeArmiestoTerritories(0);
+
     }
 
     /**

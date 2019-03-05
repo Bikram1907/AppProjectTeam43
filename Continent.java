@@ -52,4 +52,36 @@ public class Continent {
     public void setTerritoriesHeld(ArrayList<Territories> territoriesHeld) {
         this.territoriesHeld = territoriesHeld;
     }
+    
+    /**
+     * return the continent name.
+     * @return
+     */
+    public String getContinentName() {
+        return continentName;
+    }
+
+    /**
+     * return continent score.
+     * @return
+     */
+    public int getContinentScore() {
+        return continentScore;
+    }
+
+    /**
+     * return the adjacent continents.
+     * @return
+     */
+    public ArrayList<Continent> getAdjacentContinents() {
+        return adjacentContinents;
+    }
+
+    /**
+     * return the adjacent territories.
+     * @return
+     */
+    public ArrayList<Territories> getTerritoriesHeld() {
+        return territoriesHeld;
+    }
 }

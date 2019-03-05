@@ -40,6 +40,19 @@ class LoadgameControllerTest {
      */
     @Test
     void mouseclicked() {
+       
+        GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).setPlayerArmies(2);
+        String[] keys = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().keySet().toArray(new
+                String[GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().size()]);
+
+        int noofarmies = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().get(keys[0]).getArmiesHeld();
+
+        GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().get(keys[0]).increamentarmyCountby1();
+
+        int aftermouseclickedArmies = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().get(keys[0]).getArmiesHeld();
+
+        assertNotEquals(noofarmies,aftermouseclickedArmies);
+
     }
    
     /**

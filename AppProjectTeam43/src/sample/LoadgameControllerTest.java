@@ -65,6 +65,18 @@ class LoadgameControllerTest {
         assertEquals(2,reinforcementarmies/3);
         assertEquals(3,10/3);
         assertEquals(4,14/3);
+    }
+   
+   /**
+     * This method sets the player characters.
+     */
+    void setPlayerCharacters() {
 
+        playerCharacters.put("Player1","Human");
+        playerCharacters.put("Player2","Human");
+        playerCharacters.put("Player3","Human");
+        playerCharacters.put("Player4","Human");
+        playerCharacters.put("Player5","Human");
+        playerCharacters.put("Player6","Human");
     }
 }

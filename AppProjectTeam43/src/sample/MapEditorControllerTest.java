@@ -42,4 +42,17 @@ class MapEditorControllerTest {
         GameDetails.getGamedetails().clearData();
         assertFalse(mecObject.ismapValid(invalidfile,"EDITMAP"));
     }
+    
+    /**
+     * This method checks if the edited map is valid or not.
+     */
+    @Test
+    void ismapValid() {
+
+        GameDetails.getGamedetails().createMap(0);
+        assertTrue(GameDetails.getGamedetails().validateMap(0));
+
+        GameDetails.getGamedetails().createMap(1);
+        assertFalse(GameDetails.getGamedetails().validateMap(1));
+    }
 }

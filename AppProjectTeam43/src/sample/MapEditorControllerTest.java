@@ -25,9 +25,6 @@ class MapEditorControllerTest {
 
         validfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\World.map");
         invalidfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\invalid.map");
-
-        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"EDITMAP"));
-        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"EDITMAP"));
     }
     
     /**
@@ -49,10 +46,14 @@ class MapEditorControllerTest {
     @Test
     void ismapValid() {
 
+       GameDetails.getGamedetails().clearData();
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"EDITMAP"));
         GameDetails.getGamedetails().createMap(0);
         assertTrue(GameDetails.getGamedetails().validateMap(0));
 
-        GameDetails.getGamedetails().createMap(1);
-        assertFalse(GameDetails.getGamedetails().validateMap(1));
+        GameDetails.getGamedetails().clearData();
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"EDITMAP"));
+        GameDetails.getGamedetails().createMap(0);
+        assertFalse(GameDetails.getGamedetails().validateMap(0));
     }
 }

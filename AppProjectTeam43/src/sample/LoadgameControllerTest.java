@@ -60,5 +60,11 @@ class LoadgameControllerTest {
      */
     @Test
     void calculateReinforcementArmies() {
+       
+        int reinforcementarmies = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getTerritoriesHeld().size();
+        assertEquals(2,reinforcementarmies/3);
+        assertEquals(3,10/3);
+        assertEquals(4,14/3);
+
     }
 }

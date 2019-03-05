@@ -115,7 +115,7 @@ public class MapEditorController {
     public void cancelAction() {
 
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        GameDetails.getGamedetails().getgamedetails().clear();
+        GameDetails.getGamedetails().clearData();
         stage.close();
     }
 

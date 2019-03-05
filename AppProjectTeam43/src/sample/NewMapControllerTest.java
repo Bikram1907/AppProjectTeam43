@@ -23,9 +23,6 @@ class NewMapControllerTest {
 
         validfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\World.map");
         invalidfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\invalid.map");
-
-        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"NEWMAP"));
-        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"NEWMAP"));
     }
 
     /**
@@ -34,10 +31,14 @@ class NewMapControllerTest {
     @Test
     void saveButtonAction() {
 
+        GameDetails.getGamedetails().clearData();
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"NEWMAP"));
         GameDetails.getGamedetails().createMap(0);
         assertTrue(GameDetails.getGamedetails().validateMap(0));
 
-        GameDetails.getGamedetails().createMap(1);
-        assertFalse(GameDetails.getGamedetails().validateMap(1));
+        GameDetails.getGamedetails().clearData();
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"NEWMAP"));
+        GameDetails.getGamedetails().createMap(0);
+        assertFalse(GameDetails.getGamedetails().validateMap(0));
     }
 }

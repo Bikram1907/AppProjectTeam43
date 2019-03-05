@@ -29,4 +29,17 @@ class MapEditorControllerTest {
         GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"EDITMAP"));
         GameDetails.getGamedetails().getgamedetails().add(new GameDetails(invalidfile,"EDITMAP"));
     }
+    
+    /**
+     * This method tests if the edited map is saved or not.
+     */
+    @Test
+    void saveContent() {
+
+        GameDetails.getGamedetails().clearData();
+        assertTrue(mecObject.ismapValid(validfile,"EDITMAP"));
+
+        GameDetails.getGamedetails().clearData();
+        assertFalse(mecObject.ismapValid(invalidfile,"EDITMAP"));
+    }
 }

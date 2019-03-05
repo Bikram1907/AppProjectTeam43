@@ -124,6 +124,7 @@ public class NewMapController {
      */
     public void cancelButtonAction() {
 
+        GameDetails.getGamedetails().clearData();
         Stage stage = (Stage) newmapCancelbutton.getScene().getWindow();
         stage.close();
     }

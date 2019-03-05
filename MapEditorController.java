@@ -47,6 +47,19 @@ public class MapEditorController {
         chooser.setTitle("Open Map");
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
         selectedfile = chooser.showOpenDialog(anchorPane.getScene().getWindow());
+        
+        // Check if the Map is valid or not.
+        // If valid print map is valid  else print invalid map.
+        if(ismapValid(selectedfile,"EDITMAP")) {
+            System.out.println("**********************************Map is valid.**************************************");
+        } else {
+            System.out.println("**************************Invalid map check the connections.*************************");
+        }
+
+        // Clear the object created for checking map validation.
+        GameDetails.getGamedetails().clearData();
+        
+        // read the contents from the file and display to the textarea.
         readFilecontents();
         textArea.setText(builder.toString());
     }

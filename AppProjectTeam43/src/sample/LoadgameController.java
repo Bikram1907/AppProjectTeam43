@@ -281,6 +281,8 @@ public class LoadgameController {
                 displayPlayer4stats(true);
                 displayPlayer5stats(true);
                 displayPlayer6stats(true);
+                
+                disableTextnodes(currentPlayer);
 
                 noofReinforcementArmies = calculateReinforcementArmies();
                 playersList.get(currentPlayer).increaseArmyCountByValue(noofReinforcementArmies);

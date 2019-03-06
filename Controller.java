@@ -115,4 +115,25 @@ public class Controller {
             System.out.println("Cancel button is pressed");
         }
     }
+    
+    /**
+     * Returns the index of the gamedetail object based on new game or editmap or newmap.
+     * @param typeName
+     * @return index
+     */
+    public int returnIndex(String typeName) {
+
+        int size = GameDetails.getGamedetails().getgamedetails().size();
+        int index = -1;
+
+        for(int i = 0; i<size; i++) {
+            GameDetails instance = GameDetails.getGamedetails().getgamedetails().get(i);
+            if(instance.getTypeName().contains(typeName)) {
+                index = i;
+                System.out.printf("%s object index in arraylist is = %d%n", typeName, index);
+            }
+        }
+
+        return index;
+    }
 }

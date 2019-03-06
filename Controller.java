@@ -163,4 +163,30 @@ public class Controller {
         }
 
     }
+    
+    /**
+     * This method is used to the edit the map.
+     */
+    public void editMap() {
+
+        FXMLLoader mapeditLoader = new FXMLLoader(getClass().getResource("Mapeditor.fxml"));
+        try {
+            Parent root2 = mapeditLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Map Editor Window");
+            stage.setScene(new Scene(root2, 900,700));
+            stage.setResizable(false);
+            stage.show();
+
+            Stage primaryStage = (Stage) MainBorderPane.getScene().getWindow();
+            primaryStage.hide();
+
+            stage.setOnHidden(e -> primaryStage.show());
+
+        } catch (Exception e) {
+            System.out.println("Cannot load the map editor window.");
+            e.printStackTrace();
+            return;
+        }
+    }
 }

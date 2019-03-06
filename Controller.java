@@ -136,4 +136,31 @@ public class Controller {
 
         return index;
     }
+    
+    /**
+     * To load the game Window.
+     */
+    public void loadGamewindow() {
+
+        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("loadGame.fxml"));
+        try{
+            Parent root1 = gameLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Game window");
+            stage.setScene(new Scene(root1,1000,700));
+            stage.setResizable(false);
+            stage.show();
+
+            Stage primaryStage = (Stage) MainBorderPane.getScene().getWindow();
+            primaryStage.hide();
+
+            stage.setOnHidden(e -> primaryStage.show());
+
+        } catch (Exception e) {
+            System.out.println("Cannot load the game window");
+            e.printStackTrace();
+            return;
+        }
+
+    }
 }

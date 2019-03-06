@@ -189,4 +189,31 @@ public class Controller {
             return;
         }
     }
+    
+    /**
+     * This method is used to construct new map.
+     */
+    public void constructNewmap() {
+
+        FXMLLoader newMap = new FXMLLoader(getClass().getResource("NewMap.fxml"));
+        try {
+            Parent newMaproot = newMap.load();
+            Stage stage = new Stage();
+            stage.setTitle("New Map Window");
+            stage.setScene(new Scene(newMaproot,1200,700));
+            stage.setResizable(false);
+            stage.show();
+
+            Stage primaryStage = (Stage) MainBorderPane.getScene().getWindow();
+            primaryStage.hide();
+
+            stage.setOnHidden(e -> primaryStage.show());
+
+        } catch (Exception e) {
+            System.out.println("Cannot load the new map window.");
+            e.printStackTrace();
+            return;
+        }
+
+    }
 }

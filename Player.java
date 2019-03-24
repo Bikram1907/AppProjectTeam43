@@ -282,4 +282,15 @@ public class Player extends Observable {
 
         cardsHeld.remove(card);
     }
+     /**
+     * To add the territory to the list and notify observers.
+     * @param territory
+     */
+    public void addTerritory(Territories territory) {
+
+        territoriesHeld.put(territory.getTerritorieName(),territory);
+        setChanged();
+        notifyObservers(territoriesHeld);
+    }
+
 }

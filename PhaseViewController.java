@@ -42,5 +42,15 @@ public class PhaseViewController implements Observer {
     public static PhaseViewController getPvcInstance() {
         return pvcInstance;
     }
+    /**
+     * To add the text to the view.
+     * @param text
+     */
+    @FXML
+    public void addTextToTextArea(String text) {
+
+        phaseViewTextArea.appendText(text);
+        phaseViewTextArea.appendText("\n");
+    }
 
 }

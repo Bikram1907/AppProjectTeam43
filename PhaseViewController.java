@@ -35,4 +35,12 @@ public class PhaseViewController implements Observer {
         phaseViewTextArea.setText("This windows displays information about the actions in the phase");
         phaseViewTextArea.appendText("\n");
     }
+    /**
+     * To return the class object.
+     * @return class instance
+     */
+    public static PhaseViewController getPvcInstance() {
+        return pvcInstance;
+    }
+
 }

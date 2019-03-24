@@ -352,7 +352,8 @@ public class GameDetails {
                             String[] str = line.split(",");
                             for(int i = 4; i<str.length; i++) {
                                 if(!str[0].trim().equalsIgnoreCase(str[i].trim()) && territoriesList.keySet().contains(str[i].trim())) {
-                                    if(territoriesList.get(str[i].trim()).getAdjacentTerritories().size() != 0) {
+                                    if(territoriesList.get(str[i].trim()).getAdjacentTerritories().size() != 0 && territoriesList
+                                    .get(str[i].trim()).getAdjacentTerritories().contains(str[0].trim())) {
                                         result = true;
                                     } else {
                                         result = false;

@@ -32,3 +32,26 @@ public class PlayersDominationViewController implements Observer {
                 );
         this.dominationViewTextArea.appendText("\n");
     }
+    
+    /**
+     * This method adds the text to the text area.
+     * @param text
+     */
+    @FXML
+    public void addTextToTextArea(String text) {
+
+        this.dominationViewTextArea.appendText(text);
+        this.dominationViewTextArea.appendText("\n");
+    }
+
+    /**
+     * To set the text to the view.
+     * @param text
+     */
+    @FXML
+    public void setTextToTextArea(String text) {
+
+        this.dominationViewTextArea.setText(text);
+        this.dominationViewTextArea.appendText("\n");
+    }
+}

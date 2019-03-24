@@ -28,6 +28,8 @@ public class GameDetails {
     private String typeName;
     private ArrayList<String> checkContinent = new ArrayList<String>();
     private HashMap<Integer,Integer> noofArmies = new HashMap<Integer, Integer>();
+    private String currentGamePhase;
+
 
     /**
      * Empty Constructor.
@@ -131,6 +133,24 @@ public class GameDetails {
      */
     public void setNoofArmies(HashMap<Integer, Integer> noofArmies) {
         this.noofArmies = noofArmies;
+    }
+    
+    /**
+     * Method to set the game phase.
+     * @param currentGamePhase
+     */
+    public void setGamePhase(String currentGamePhase) {
+        this.currentGamePhase = currentGamePhase;
+        setChanged();
+        notifyObservers(currentGamePhase);
+    }
+    
+    /**
+     * To return the gamephase.
+     * @return currentGamePhase
+     */
+    public String getGamePhase() {
+        return currentGamePhase;
     }
 
     /**

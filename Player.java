@@ -1,13 +1,17 @@
-package sample;
+package sample.model;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
+import sample.controller.LoadgameController;
 
-import java.util.HashMap;
+import java.util.*;
+import java.util.Map;
 
 /**
  * This class maintains the player details and implements methods related to the player.
+ * @author Team43
  */
-public class Player {
+public class Player extends Observable {
 
     private String playerId;
     private String playerName;
@@ -18,6 +22,7 @@ public class Player {
     private int cardsHolded;
     private HashMap<String, Territories> territoriesHeld;
     private HashMap<String, Continent> continentHeld;
+    private List<Card> cardsHeld;
 
     /**
      * Constructor with parameters.
@@ -63,6 +68,7 @@ public class Player {
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
+
     /**
      * To set Number of armies.
      * @param playerArmies
@@ -128,8 +134,24 @@ public class Player {
     }
 
     /**
-     * returns the Player name.
+     * To set the cards list.
+     * @param cardsHeld
+     */
+    public void setCardsHeld(List<Card> cardsHeld) {
+        this.cardsHeld = cardsHeld;
+    }
+
+    /**
+     * To get the cards list.
      * @return
+     */
+    public List<Card> getCardsHeld() {
+        return cardsHeld;
+    }
+
+    /**
+     * returns the Player name.
+     * @return playerName
      */
     public String getPlayerName() {
         return playerName;
@@ -137,7 +159,7 @@ public class Player {
 
     /**
      * returns the number of armies player held.
-     * @return
+     * @return playerArmies
      */
     public int getPlayerArmies() {
         return playerArmies;
@@ -145,7 +167,7 @@ public class Player {
 
     /**
      * returns if the player is knocked out or not.
-     * @return
+     * @return isKnocked
      */
     public Boolean getKnocked() {
         return isKnocked;
@@ -153,7 +175,7 @@ public class Player {
 
     /**
      * returns the players character.
-     * @return
+     * @return playerCharacter
      */
     public String getPlayerCharacter() {
         return playerCharacter;
@@ -161,7 +183,7 @@ public class Player {
 
     /**
      * returns players color.
-     * @return
+     * @return playerColor
      */
     public Color getPlayerColor() {
         return playerColor;
@@ -169,7 +191,7 @@ public class Player {
 
     /**
      * returns the number of cards players held.
-     * @return
+     * @return cardsHolded
      */
     public int getCardsHolded() {
         return cardsHolded;
@@ -177,7 +199,7 @@ public class Player {
 
     /**
      * returns the territories player held.
-     * @return
+     * @return territoriesHeld
      */
     public HashMap<String, Territories> getTerritoriesHeld() {
         return territoriesHeld;
@@ -185,14 +207,15 @@ public class Player {
 
     /**
      * returns the continents player held.
-     * @return
+     * @return continentHeld
      */
     public HashMap<String, Continent> getContinentHeld() {
         return continentHeld;
     }
+
     /**
      * To return the player Id.
-     * @return
+     * @return playerId
      */
     public String getPlayerId() {
         return playerId;
@@ -200,7 +223,7 @@ public class Player {
 
     /**
      * Overrides the method toString() method.
-     * @return
+     * @return playerName
      */
     @Override
     public String toString() {
@@ -226,7 +249,10 @@ public class Player {
      * @param value
      */
     public void increaseArmyCountByValue(int value) {
+
         playerArmies += value;
+        setChanged();
+        notifyObservers(playerArmies);
     }
 
     /**
@@ -234,6 +260,26 @@ public class Player {
      * @param value
      */
     public void decreaseArmyCountByValue(int value) {
+
         playerArmies -= value;
+        setChanged();
+        notifyObservers(playerArmies);
+    }
+    /**
+     * To add card to the list.
+     * @param card
+     */
+    public void addCard(Card card) {
+
+        cardsHeld.add(card);
+    }
+
+    /**
+     * To remove the card from the list.
+     * @param card
+     */
+    public void removeCard(Card card) {
+
+        cardsHeld.remove(card);
     }
 }

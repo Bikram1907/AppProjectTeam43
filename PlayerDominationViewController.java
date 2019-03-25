@@ -100,4 +100,16 @@ public class PlayersDominationViewController implements Observer {
         }
         addTextToTextArea("---------------------------------------------------------------------------------");
     }
+    
+    /**
+     * To calculate the percentage of map controlled by the player
+     * @param o
+     * @return percentage
+     */
+    public int calculatePercentageOfMapControlledByPlayer(Observable o,int index,int mapSize) {
+
+        System.out.println("Map SIZE = " + mapSize);
+        int percentage = (((GameDetails) o).getPlayersList().get(index).getTerritoriesHeld().size()*100) / mapSize;
+        return percentage;
+    }
 }

@@ -54,4 +54,21 @@ public class PlayersDominationViewController implements Observer {
         this.dominationViewTextArea.setText(text);
         this.dominationViewTextArea.appendText("\n");
     }
+    
+    /**
+     * To clear the contents on the view.
+     */
+    @FXML
+    public void clearTextInTextArea() {
+
+        this.dominationViewTextArea.clear();
+    }
+    /**
+     * This method closes the window.
+     */
+    public void closeWindow() {
+
+        Stage stage = (Stage) dominationViewTextArea.getScene().getWindow();
+        stage.close();
+    }
 }

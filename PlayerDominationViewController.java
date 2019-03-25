@@ -71,4 +71,33 @@ public class PlayersDominationViewController implements Observer {
         Stage stage = (Stage) dominationViewTextArea.getScene().getWindow();
         stage.close();
     }
+    
+    /**
+     * This function updates and prints the contents to the view when there is any change using observers pattern.
+     * @param o
+     * @param args
+     */
+    @Override
+    public void update(Observable o, Object args) {
+
+        clearTextInTextArea();
+        setTextToTextArea("PLAYER STATS.............................................................................");
+        int noOfPlayer = ((GameDetails) o).getPlayersList().size();
+        int mapSize = ((GameDetails) o).getMapSize();
+
+        for(int i = 0; i< noOfPlayer; i++) {
+            int percentage = calculatePercentageOfMapControlledByPlayer(o,i,mapSize);
+            String continentList = getContinentListOfAPlayer(o,i);
+            int noofArmies = ((GameDetails) o).getPlayersList().get(i).getPlayerArmies();
+            StringBuilder builder = new StringBuilder();
+            int index = i+1;
+            builder.append("Player " + index +" Stats" +"\n")
+                    .append("Percentage of Map Controlled by the Player = " + percentage)
+                    .append("\n" +"Continents Held = " +"\n" + continentList)
+                    .append("\nNo of armies Held by the player = "+noofArmies)
+                    .append("\n");
+            addTextToTextArea(builder.toString());
+        }
+        addTextToTextArea("---------------------------------------------------------------------------------");
+    }
 }

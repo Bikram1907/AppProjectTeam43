@@ -29,6 +29,7 @@ public class GameDetails {
     private ArrayList<String> checkContinent = new ArrayList<String>();
     private HashMap<Integer,Integer> noofArmies = new HashMap<Integer, Integer>();
     private String currentGamePhase;
+    private int currentPlayer = 0;
 
 
     /**
@@ -143,6 +144,24 @@ public class GameDetails {
         this.currentGamePhase = currentGamePhase;
         setChanged();
         notifyObservers(currentGamePhase);
+    }
+    
+    /**
+     * To set the current player.
+     * @param currentPlayer
+     */
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+        setChanged();
+        notifyObservers(currentPlayer);
+    }
+    
+    /**
+     * To get the current player
+     * @return currentPlayer
+     */
+    public int getCurrentPlayer() {
+        return currentPlayer;
     }
     
     /**

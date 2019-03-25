@@ -292,5 +292,22 @@ public class Player extends Observable {
         setChanged();
         notifyObservers(territoriesHeld);
     }
+     /**
+     * To remove the territory from the player lis and notify observers.
+     * @param territory
+     * @return boolean
+     */
+    public boolean removeTerritory(Territories territory) {
+
+        if(territoriesHeld.containsKey(territory.getTerritorieName())) {
+            territoriesHeld.remove(territory.getTerritorieName());
+            setChanged();
+            notifyObservers(territoriesHeld);
+            return true;
+        }
+        return false;
+    }
+
+
 
 }

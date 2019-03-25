@@ -357,6 +357,22 @@ public class Player extends Observable {
         System.out.println("[Reinforcement amries are calculated]" +" [" +reinforcementArmies + "]");
         increaseArmyCountByValue(reinforcementArmies);
     }
+ /**
+     * This method check if the player can do a valid foritification. If yes then player can fortify.
+     * @param sourceCountry
+     * @param destinationCountry
+     * @return boolean
+     */
+    public boolean canFortify(String sourceCountry,String destinationCountry) {
+
+        Territories sourceTerritory = territoriesHeld.get(sourceCountry);
+        if(sourceTerritory.getAdjacentTerritories().contains(destinationCountry)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 

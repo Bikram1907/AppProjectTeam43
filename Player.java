@@ -334,6 +334,29 @@ public class Player extends Observable {
         }
         return false;
     }
+ /**
+     * To calculate the reinforcement armies to the players.
+     * @return int
+     */
+    public void calculateReinforcementArmies() {
+
+        int reinforcementArmies = 0;
+        if(this.territoriesHeld.size()/3 < 3) {
+            reinforcementArmies = 3;
+        } else {
+            reinforcementArmies = this.territoriesHeld.size()/3;
+        }
+        if(!this.continentHeld.isEmpty()) {
+            System.out.println("[ReinforcementPhase][Checking for continent list of the player]");
+            for(String key : this.continentHeld.keySet()) {
+                Continent continent = this.continentHeld.get(key);
+                reinforcementArmies = reinforcementArmies + continent.getContinentScore();
+            }
+        }
+
+        System.out.println("[Reinforcement amries are calculated]" +" [" +reinforcementArmies + "]");
+        increaseArmyCountByValue(reinforcementArmies);
+    }
 
 
 

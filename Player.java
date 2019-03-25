@@ -372,9 +372,22 @@ public class Player extends Observable {
             return false;
         }
     }
+      /**
+     * This method performs a fortication move.
+     * @param noOfArmiesToMove
+     * @param sourceCountry
+     * @param destinationCountry
+     * @return boolean
+     */
+    public boolean doFortification(int noOfArmiesToMove,String sourceCountry,String destinationCountry) {
 
+        Territories sourceTerritory = territoriesHeld.get(sourceCountry);
+        sourceTerritory.setArmiesHeld(sourceTerritory.getArmiesHeld()-noOfArmiesToMove);
 
+        Territories destinationTerritory = territoriesHeld.get(destinationCountry);
+        destinationTerritory.setArmiesHeld(destinationTerritory.getArmiesHeld()+noOfArmiesToMove);
 
-
+        return true;
+    }
 
 }

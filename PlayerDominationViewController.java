@@ -112,4 +112,24 @@ public class PlayersDominationViewController implements Observer {
         int percentage = (((GameDetails) o).getPlayersList().get(index).getTerritoriesHeld().size()*100) / mapSize;
         return percentage;
     }
+    
+    /**
+     * This function will return the player continent list.
+     * @param o
+     * @param index
+     * @return continentList
+     */
+    public String getContinentListOfAPlayer(Observable o,int index) {
+
+        String continentList = "";
+        if(!((GameDetails) o).getPlayersList().get(index).getContinentHeld().isEmpty()) {
+            for(String key : ((GameDetails) o).getPlayersList().get(index).getContinentHeld().keySet()) {
+                System.out.println("Entered the for loop of the players domination continent list.");
+                continentList = continentList + ((GameDetails) o).getPlayersList().get(index).getContinentHeld().get(key).getContinentName();
+                continentList = continentList + "\n";
+            }
+            return continentList.trim();
+        }
+        return "Empty";
+    }
 }

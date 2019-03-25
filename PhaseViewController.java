@@ -71,4 +71,25 @@ public class PhaseViewController implements Observer {
         phaseViewTextArea.clear();
     }
 
+    /**
+     * This method displays the game phase and the current player using observer pattern.
+     * @param o
+     * @param currentGamePhase
+     */
+    @Override
+    public void update(Observable o,Object currentGamePhase) {
+
+        if(currentGamePhase instanceof Integer) {
+            int currentPlayer = ((GameDetails) o).getCurrentPlayer();
+            String text = "The current player is = " + ((GameDetails) o).getPlayersList().get(currentPlayer).getPlayerName();
+            addTextToTextArea(text);
+        } else if(currentGamePhase instanceof String) {
+            String GamePhase = ((GameDetails) o).getGamePhase();
+            int currentPlayer = ((GameDetails) o).getCurrentPlayer();
+            String text = "Game phase has been changed to = " + GamePhase + ". The current player is " +
+                    ((GameDetails) o).getPlayersList().get(currentPlayer);
+            setTextToTextArea(text);
+        }
+    }
+
 }

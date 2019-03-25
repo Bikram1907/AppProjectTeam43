@@ -307,6 +307,34 @@ public class Player extends Observable {
         }
         return false;
     }
+ /**
+     * To add the continent to the list and notify observers.
+     * @param continent
+     */
+    public void addContinent(Continent continent) {
+
+        continentHeld.put(continent.getContinentName(),continent);
+        System.out.println("[Player Continent Size is = ]" + continentHeld.size());
+        setChanged();
+        notifyObservers(this.continentHeld);
+    }
+
+    /**
+     * To remove the continent from the player list and notify observers.
+     * @param continentName
+     * @return boolean
+     */
+    public boolean removeContinent(String continentName) {
+
+        if(this.continentHeld.containsKey(continentName)) {
+            this.continentHeld.remove(continentName);
+            this.setChanged();
+            this.notifyObservers(this.continentHeld);
+            return true;
+        }
+        return false;
+    }
+
 
 
 

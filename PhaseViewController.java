@@ -52,5 +52,15 @@ public class PhaseViewController implements Observer {
         phaseViewTextArea.appendText(text);
         phaseViewTextArea.appendText("\n");
     }
+    /**
+     * To set the text to the view.
+     * @param text
+     */
+    @FXML
+    public void setTextToTextArea(String text) {
+
+        phaseViewTextArea.setText(text);
+        phaseViewTextArea.appendText("\n");
+    }
 
 }

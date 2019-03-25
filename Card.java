@@ -34,4 +34,20 @@ public class Card {
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
+    
+    /**
+     * To get the territory name of that card.
+     * @return territoryName
+     */
+    public String getTerritoryName() {
+        return territoryName;
+    }
+
+    /**
+     * To get the card type.
+     * @return cardType
+     */
+    public String getCardType() {
+        return cardType;
+    }
 }

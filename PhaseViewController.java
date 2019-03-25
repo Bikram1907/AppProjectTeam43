@@ -62,5 +62,13 @@ public class PhaseViewController implements Observer {
         phaseViewTextArea.setText(text);
         phaseViewTextArea.appendText("\n");
     }
+    /**
+     * To clear the contents on the view.
+     */
+    @FXML
+    public void clearTextInTextArea() {
+
+        phaseViewTextArea.clear();
+    }
 
 }

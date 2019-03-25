@@ -389,5 +389,48 @@ public class Player extends Observable {
 
         return true;
     }
+     /**
+     * Returns true if the attacked country is adjacent to attacker country.
+     * @param attackerCountry
+     * @param attackedCountry
+     * @return boolean
+     */
+    public boolean canAttack(String attackerCountry,String attackedCountry) {
+
+        Territories sourceCountry = this.territoriesHeld.get(attackerCountry);
+        if(sourceCountry.getAdjacentTerritories().contains(attackedCountry)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * This method performs attack by rolling the dice and declares the winner.
+     * @param attackerDice
+     * @param attackedDice
+     * @param attackerCountry
+     * @param attackedCountry
+     * @param defender
+     * @return attack result
+     */
+    public String doAttack(int attackerDice,int attackedDice,String attackerCountry,String attackedCountry,Player defender) {
+
+        // declare arraylist for dice.
+        ArrayList<Integer> attackerDiceList = new ArrayList<>();
+        ArrayList<Integer> attackedDiceList = new ArrayList<>();
+
+        // call the dice method to arraylist.
+        attackerDiceList = rollDice(attackerDice);
+        attackedDiceList = rollDice(attackedDice);
+
+        // to display the dice.
+       // displayTheDice(attackerDiceList,attackedDiceList);
+
+        // Call the function to decide the winner.
+        String result = determineWinner(attackerDiceList,attackedDiceList,defender,attackedCountry,attackerCountry);
+
+        return result;
+    }
+
 
 }

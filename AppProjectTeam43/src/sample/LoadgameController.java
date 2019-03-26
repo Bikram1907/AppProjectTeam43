@@ -635,6 +635,18 @@ public class LoadgameController {
     }
     
     /**
+     * This function displays the no of armies player want to move after winning the territory
+     * @param value
+     */
+    public void displayNumberOfArmiesYouWantToMoveAfterWinningTerritory(boolean value) {
+
+        armiesToMoveTextField.clear();
+        armiesToMoveLabel.setVisible(value);
+        armiesToMoveTextField.setVisible(value);
+        confirmButton.setVisible(value);
+    }
+    
+    /**
      * To display the details from which player can foritify the territory
      * @param value
      */

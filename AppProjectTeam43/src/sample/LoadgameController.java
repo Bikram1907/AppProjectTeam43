@@ -635,6 +635,16 @@ public class LoadgameController {
     }
     
     /**
+     * To set visible or hide the cards exchange and skip buttons.
+     * @param value
+     */
+    public void isVisbleCardsExchangeButtons(boolean value) {
+
+        loadCardExchangeButton.setVisible(value);
+        skipButton.setVisible(value);
+    }
+
+    /**
      * To display the defender Dice to the window
      * @param defenderDiceList
      */

@@ -431,6 +431,24 @@ public class Player extends Observable {
 
         return result;
     }
+    /**
+     * This method returns list of dice values after rolling the dice.
+     * @param noOfDice
+     * @return
+     */
+    public ArrayList<Integer> rollDice(int noOfDice) {
+
+        ArrayList<Integer> diceList = new ArrayList<>();
+        int max = 6,min = 1;
+        int range = max - min + 1;
+        for(int i = 0; i<noOfDice; i++) {
+            diceList.add((int) (Math.random() * range) + min);
+        }
+        Collections.sort(diceList,Collections.reverseOrder());
+        return diceList;
+    }
+
+
 
 
 }

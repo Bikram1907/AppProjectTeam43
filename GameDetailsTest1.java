@@ -54,4 +54,13 @@ public class GameDetailsTest1 {
         GameDetails.getGamedetails().createMap(1);
         assertFalse(GameDetails.getGamedetails().validateMap(1));
     }
+    @org.junit.Test
+    public void distributeArmies() {
+
+        int noofarmiesofPlayers = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList().get(0).getPlayerArmies();
+        assertEquals(20,noofarmiesofPlayers);
+
+        noofarmiesofPlayers = GameDetails.getGamedetails().getgamedetails().get(1).getPlayersList().get(0).getPlayerArmies();
+        assertEquals(25,noofarmiesofPlayers);
+    }
 }

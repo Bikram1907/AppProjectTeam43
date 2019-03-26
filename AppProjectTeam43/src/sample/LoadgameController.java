@@ -635,6 +635,32 @@ public class LoadgameController {
     }
     
     /**
+     * This functions is used to skip from reinforcement phase to attack phase or fortify phase.
+     */
+    public void skipToNextPhase() {
+
+        if(playersList.get(currentPlayer).getCardsHolded() <= 5) {
+            //playersList.get(currentPlayer).setPlayerCurrentPhase(ATTACKPHASE);
+            gd.setGamePhase(ATTACKPHASE);
+
+            isVisbleCardsExchangeButtons(false);
+            isVisibleAttackOrFortifyButtons(true);
+        } else {
+            Alert cardsExchangeAlert = new Alert(Alert.AlertType.WARNING);
+            cardsExchangeAlert.setTitle("Cards Exchange Alert");
+            cardsExchangeAlert.setContentText("Cannot skip to next phase, you have minimum 5 cards. So you " +
+                    "must trade the cards.");
+            cardsExchangeAlert.getButtonTypes().add(ButtonType.OK);
+            Optional<ButtonType> result = cardsExchangeAlert.showAndWait();
+            if(result.isPresent() && result.get() == ButtonType.OK) {
+                isVisbleCardsExchangeButtons(false);
+                loadCardsExchangeView();
+            }
+            System.out.println("Cannot skip to the next phase. You have 5 cards, So you have to trade the cards");
+        }
+    }
+    
+    /**
      * This function will call the reinforcementPhase function and display buttons for cards exchange or skip the
      * cards exchange and proceed to next phase.
      * @param armiesPlayer

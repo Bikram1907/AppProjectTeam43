@@ -412,8 +412,7 @@ public class GameDetails {
         for(int i = 0; i<size; i++) {
             j = i + 1;
             HashMap<String,Territories> territoriesHeld = new HashMap<String,Territories>();
-            playersList.add(new Player("Player"+j,0,false,gamedetails.get(0).getPlayerCharacters().get("Player"+j)
-                                       ,playerColors.get(i),0));
+            playersList.add(new Player("Player"+j,0,false,"None",playerColors.get(i),0));
             playersList.get(i).setTerritoriesHeld(territoriesHeld);
         }
 

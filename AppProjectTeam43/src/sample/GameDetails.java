@@ -561,6 +561,25 @@ public class GameDetails {
     }
 
     /**
+     * This function generates the random card type.
+     * @return card type
+     */
+    public String generateRandomCardType() {
+
+        int min = 1;
+        int max = 3;
+        int range = max - min + 1;
+        int randomNumber = (int) (Math.random()*range) + min;
+        if(randomNumber == 1) {
+            return "INFANTRY";
+        } else if(randomNumber == 2) {
+            return "CAVALRY";
+        } else {
+            return "ARTILLERY";
+        }
+    }
+
+    /**
      * This will clears the data and objects and contents from hashmap and lists.
      */
     public void clearData() {

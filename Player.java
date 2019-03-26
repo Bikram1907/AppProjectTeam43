@@ -488,9 +488,47 @@ public class Player extends Observable {
 
         return "";
     }
+     /**
+     * To display the dice.
+     * @param attackerDiceList
+     * @param attackedDiceList
+     */
+    public void displayTheDice(ArrayList<Integer> attackerDiceList,ArrayList<Integer> attackedDiceList) {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/view/loadGame.fxml"));
+        LoadgameController lgcController = loader.getController();
 
+        lgcController.displayAttackerDiceToTheConsole(attackerDiceList);
+        lgcController.displayDefenderDiceToTheConsole(attackedDiceList);
+    }
 
+    public boolean checkIfATerritoryHasLostAllArmies(String Country) {
 
+        if(territoriesHeld.get(Country).getArmiesHeld() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfPlayerHasLostAllCountries() {
+
+        if(territoriesHeld.size() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void transferCardsFromOnePlayerToAnother(Player attacker) {
+
+        for(int i = 0; i<cardsHeld.size(); i++) {
+            attacker.getCardsHeld().add(cardsHeld.get(i));
+        }
+        cardsHeld.clear();
+        cardsHolded = 0;
+
+        attacker.setCardsHolded(attacker.getCardsHeld().size());
+    }
 
 }
+
+

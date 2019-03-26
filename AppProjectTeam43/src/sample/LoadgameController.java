@@ -635,6 +635,60 @@ public class LoadgameController {
     }
     
     /**
+     * This functions implements the card exchange view.
+     */
+    public void loadCardsExchangeView() {
+
+        if(playersList.get(currentPlayer).getCardsHolded() >= 3) {
+            Dialog<ButtonType> cardsExchangeDialog = new Dialog<>();
+            cardsExchangeDialog.initOwner(mainBorderPane.getScene().getWindow());
+            cardExchangeLoader = new FXMLLoader();
+            cardExchangeLoader.setLocation(getClass().getResource("/sample/view/CardExchange.fxml"));
+            try {
+                cardsExchangeDialog.getDialogPane().setContent(cardExchangeLoader.load());
+
+                cecController = cardExchangeLoader.getController();
+                cecController.initialize();
+                cecController.getCurrentPlayer(currentPlayer);
+                cecController.getPlayerListFromTheController(playersList);
+                cecController.getOriginalCardList(cardsList);
+                cecController.getCardsListFromThePlayer(FXCollections.observableList(playersList.get(currentPlayer).getCardsHeld()));
+
+                cardsExchangeDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+                Optional<ButtonType> result = cardsExchangeDialog.showAndWait();
+
+                if(result.isPresent() && (result.get() == ButtonType.OK)) {
+                    playersList = cecController.returnPlayerList();
+                    cardsList = cecController.returnOrginalCardList();
+
+                    updateThePlayerArmyField();
+                    displayCardStats();
+
+                    gd.setGamePhase(ATTACKPHASE);
+                    isVisbleCardsExchangeButtons(false);
+                    isVisibleAttackOrFortifyButtons(true);
+
+                }
+            } catch (Exception e) {
+                System.out.println("Cannot load the cards exchange dialog");
+                e.printStackTrace();
+                return;
+            }
+        } else {
+            Alert cardsExchangeAlert = new Alert(Alert.AlertType.WARNING);
+            cardsExchangeAlert.setTitle("Cards Exchange Alert");
+            cardsExchangeAlert.setContentText("You Should have minimum of 3 cards to load the cards Exchange");
+            Optional<ButtonType> result = cardsExchangeAlert.showAndWait();
+            if(result.isPresent() && result.get() == ButtonType.OK) {
+                gd.setGamePhase(ATTACKPHASE);
+                isVisbleCardsExchangeButtons(false);
+                isVisibleAttackOrFortifyButtons(true);
+            }
+        }
+    }
+
+    
+    /**
      * This function updates the armies field of the current player.
      */
     public void updateThePlayerArmyField() {

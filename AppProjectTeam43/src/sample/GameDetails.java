@@ -173,6 +173,22 @@ public class GameDetails {
     public String getGamePhase() {
         return currentGamePhase;
     }
+    
+    /**
+     * To set the map size.
+     * @param mapSize
+     */
+    public void setMapSize(int mapSize) {
+        this.mapSize = mapSize;
+    }
+    
+    /**
+     * To get the map size
+     * @return mapSize
+     */
+    public int getMapSize() {
+        return mapSize;
+    }
 
     /**
      * Method to get the class object.

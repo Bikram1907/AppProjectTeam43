@@ -635,6 +635,18 @@ public class LoadgameController {
     }
     
     /**
+     * This method will update the player fields after attack is done.
+     * @param opponentPlayerIndex
+     */
+    public void updateThePlayerFieldsAfterAttack(int opponentPlayerIndex) {
+        clickedtext.setText(Integer.toString(playersList.get(opponentPlayerIndex).getTerritoriesHeld()
+                .get(defenderCountryNode.getId()).getArmiesHeld()));
+        attackerCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld()
+                .get(attackerCountryNode.getId()).getArmiesHeld()));
+        resetTheControlsAfterAttackIsDone();
+    }
+    
+    /**
      * This function will set the UI to the default after attack is done.
      */
     public void resetTheControlsAfterAttackIsDone() {

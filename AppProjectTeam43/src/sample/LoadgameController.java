@@ -604,7 +604,17 @@ public class LoadgameController {
         }
     }
 
-   
+     /**
+     * This function removes the continent from the player list, if the player has lost the territory during
+     * the battle.
+     * @param territoryLost
+     * @param defenderPlayerIndex
+     */
+    public void removeThecontinentFromThePlayerList(Text territoryLost,int defenderPlayerIndex) {
+
+        Territories territory = playersList.get(defenderPlayerIndex).getTerritoriesHeld().get(territoryLost.getId());
+        boolean result = playersList.get(defenderPlayerIndex).removeContinent(territory.getContinentName());
+    }   
     
     /**
      * To get the continent index from the list of continents.

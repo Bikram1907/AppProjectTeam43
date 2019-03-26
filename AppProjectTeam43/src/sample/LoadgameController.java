@@ -605,6 +605,30 @@ public class LoadgameController {
     }
     
     /**
+     * To check if the player has won any continent.
+     * @param territoryWon
+     * @return boolean
+     */
+    public boolean checkIfPlayerHasWonAnyContinent(Text territoryWon) {
+
+        boolean result = false;
+        Territories territory = playersList.get(currentPlayer).getTerritoriesHeld().get(territoryWon.getId());
+        String continentName = territory.getContinentName().trim();
+        int continentIndex = getIndexOfTheContinent(continentName);
+        System.out.println("Continent Index = " + continentIndex);
+        ArrayList<String> adjacentCountries = continentList.get(continentIndex).getTerritoriesHeld();
+        for(int i = 0; i<adjacentCountries.size(); i++) {
+            if(playersList.get(currentPlayer).getTerritoriesHeld().containsKey(adjacentCountries.get(i))) {
+                result = true;
+            } else {
+                result = false;
+                return result;
+            }
+        }
+        return result;
+    }
+    
+    /**
      * To assign the continent to the player.
      * @param territoryWon
      */

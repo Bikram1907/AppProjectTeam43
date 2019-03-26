@@ -635,6 +635,19 @@ public class LoadgameController {
     }
     
     /**
+     * This method dispays the attacker label and text field in the attack phase to select the attackers country.
+     * @param value
+     */
+    public void isVisibleAttackerProperties(boolean value) {
+
+        attackerCountryLabel.setVisible(value);
+        attackerCountryTextField.setVisible(value);
+        diceLabel.setVisible(value);
+        diceTextField.setVisible(value);
+        attackProceedButton.setVisible(value);
+    }
+    
+    /**
      * This method displays the label and text field to select the attacked country.
      * @param value
      */

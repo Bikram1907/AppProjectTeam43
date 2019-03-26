@@ -635,6 +635,29 @@ public class LoadgameController {
     }
     
     /**
+     * This function will check for adjacency between the attacking country and attacked country and
+     * then performs the attack.
+     */
+    public void startAttacks() {
+
+        if(playersList.get(currentPlayer).canAttack(attackerCountryNode.getId(),defenderCountryNode.getId())) {
+            int opponentPlayerIndex = findPlayerofTheTerritory(defenderCountryNode);
+            String battleResult = playersList.get(currentPlayer).doAttack(attackerArmy,defenderArmy,attackerCountryNode.getId()
+                    ,defenderCountryNode.getId(),playersList.get(opponentPlayerIndex));
+
+            pvcInstance.addTextToTextArea("The battle result is = " + battleResult);
+            determineWhatToHappenAfterBattle(battleResult,opponentPlayerIndex);
+        } else {
+            System.out.println("Cannot attack the country. It is not adjacent");
+            pvcInstance.addTextToTextArea("Cannot attack the country. It is not adjacent");
+            isPlayerAttackerOrDefender = ATTACKER;
+            disableTextnodes(currentPlayer);
+            isVisibleDefenderProperties(false);
+            attackPhase();
+        }
+    }
+    
+    /**
      * This function will implement the logic according to the battle result.
      * @param battleResult
      * @param opponentPlayerIndex

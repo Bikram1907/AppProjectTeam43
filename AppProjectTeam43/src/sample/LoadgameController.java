@@ -443,7 +443,7 @@ public class LoadgameController {
     /**
      * This function will place the players army count and cards holded to the text field.
      */
-    /*public void setPlayerstats() {
+    public void setPlayerstats() {
 
         int noofPlayers = playersList.size();
         switch (noofPlayers) {
@@ -517,7 +517,7 @@ public class LoadgameController {
                 cardsPlayer6.setText(Integer.toString(playersList.get(5).getCardsHolded()));
                 break;
         }
-    }*/
+    }
 
     /**
      * To display the attackerDice to the window.

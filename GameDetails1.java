@@ -19,4 +19,22 @@ public class GameDetailsTest1 {
 
         validObject.setMapFile(validfile);
         invalidObject.setMapFile(invalidfile);
+        validObject.setNumberOfPlayers(6);
+        invalidObject.setNumberOfPlayers(5);
+
+        GameDetails.getGamedetails().getgamedetails().add(validObject);
+        GameDetails.getGamedetails().getgamedetails().add(invalidObject);
+
+        GameDetails.getGamedetails().IntializeColors(0);
+        GameDetails.getGamedetails().IntializeColors(1);
+
+        GameDetails.getGamedetails().IntializePlayers(0);
+        GameDetails.getGamedetails().IntializePlayers(1);
+
+        GameDetails.getGamedetails().InitializeArmies(0);
+        GameDetails.getGamedetails().InitializeArmies(1);
+
+        GameDetails.getGamedetails().distributeArmies(0);
+        GameDetails.getGamedetails().distributeArmies(1);
+    }
 }

@@ -635,6 +635,18 @@ public class LoadgameController {
     }
     
     /**
+     * This function will set the UI to the default after attack is done.
+     */
+    public void resetTheControlsAfterAttackIsDone() {
+
+        isPlayerAttackerOrDefender = ATTACKER;
+        disableTextnodes(currentPlayer);
+        isVisibleDefenderProperties(false);
+        isVisibleAttackOrFortifyButtons(true);
+        displayOrHideTheDiceImageView(false);
+    }
+    
+    /**
      * This function will implement the logic when the battle is won by the player
      * checks if the player has won the territory, if yes the it checks it results in the winning the
      * continent. And also it draws a card if player has won any territory during the battle.

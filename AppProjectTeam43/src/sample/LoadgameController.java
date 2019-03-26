@@ -635,6 +635,22 @@ public class LoadgameController {
     }
     
     /**
+     * This function will call the reinforcementPhase function and display buttons for cards exchange or skip the
+     * cards exchange and proceed to next phase.
+     * @param armiesPlayer
+     * @param cardsPlayer
+     */
+    public void proceedToNextPhase(TextField armiesPlayer, TextField cardsPlayer) {
+
+        if(gd.getGamePhase().equalsIgnoreCase(REINFORCEMENTPHASE)) {
+            reinforcementPhase(armiesPlayer);
+            isVisbleCardsExchangeButtons(true);
+            isVisibleAttackOrFortifyButtons(false);
+        }
+    }
+
+    
+    /**
      * This function displays the no of armies player want to move after winning the territory
      * @param value
      */

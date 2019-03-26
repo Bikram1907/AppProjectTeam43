@@ -37,4 +37,21 @@ public class GameDetailsTest1 {
         GameDetails.getGamedetails().distributeArmies(0);
         GameDetails.getGamedetails().distributeArmies(1);
     }
+    @org.junit.After
+    public void tearDown() throws Exception {
+    }
+
+    /**
+     * This method checks the map validation.
+     */
+    @org.junit.Test
+    public void validateMap() {
+
+        GameDetails.getGamedetails().createMap(0);
+        boolean result = GameDetails.getGamedetails().validateMap(0);
+        assertTrue(result);
+
+        GameDetails.getGamedetails().createMap(1);
+        assertFalse(GameDetails.getGamedetails().validateMap(1));
+    }
 }

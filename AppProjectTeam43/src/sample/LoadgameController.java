@@ -634,6 +634,90 @@ public class LoadgameController {
         }
     }
     
+     /**
+     * This method will display the confirmation button when selecting the source and destination countries and
+     * if both source and destination are different, then it will ask the player how many armies he want to move
+     * then it will call the player class can fortify method. If it returns true, then it will call a method from
+     * Player class that can do fortify and return true if it fortified.
+     */
+    public void proceedAction() {
+
+        // count = 1 means to select the source country.
+        if(count == 1) {
+            // get the no of armies to move from the text field
+            noOfArmiesToMove = Integer.parseInt(armiesCountTextField.getText());
+            System.out.println("noOfArmiesToMove is = " +noOfArmiesToMove);
+            pvcInstance.addTextToTextArea("The player has choosen number of armies to move is = " + noOfArmiesToMove);
+
+            // clear the text fields and hide the armies label and text field.
+            fromCountryTextField.clear();
+            armiesCountTextField.clear();
+            armiesCountLabel.setVisible(false);
+            armiesCountTextField.setVisible(false);
+
+            // get the source country
+            sourceNodeId = clickedtext.getId();
+            sourceText = clickedtext;
+            pvcInstance.addTextToTextArea("The has choosen the country = " + sourceText.getId());
+
+            // if the selected country has more than one army and no of armies to move should be less than armies in territory.
+            if(Integer.parseInt(clickedtext.getText())>1 && noOfArmiesToMove<(Integer.parseInt(clickedtext.getText()))) {
+                displayFromWhichCountryPlayerForitify(false);
+                displayToWhichCountryPlayerFortify(true);
+
+                pvcInstance.addTextToTextArea("Player has selected " + sourceNodeId + " country from which he want" +
+                        "to fortify.");
+                pvcInstance.addTextToTextArea("Player has selected " + noOfArmiesToMove + " armies to move.");
+
+                count = 2;
+                proceedButton.setVisible(false);
+            } else {
+                fortifyButtonAction();
+                pvcInstance.addTextToTextArea("Player has selected country that has minimum armies or no of armies" +
+                        "count to maximum");
+            }
+        // count = 2 means to select the destination country.
+        } else if(count == 2) {
+            // hide the text fields and labels.
+            displayToWhichCountryPlayerFortify(false);
+            proceedButton.setVisible(false);
+            toCountryTextField.clear();
+
+            // get the destination country
+            destinationNodeId = clickedtext.getId();
+            destinationText = clickedtext;
+
+            // if source and destination country not same then do fortify.
+            if(!sourceNodeId.equalsIgnoreCase(destinationNodeId)) {
+                if(playersList.get(currentPlayer).canFortify(sourceNodeId,destinationNodeId)) {
+                    if(playersList.get(currentPlayer).doFortification(noOfArmiesToMove,sourceNodeId,destinationNodeId)){
+                        pvcInstance.addTextToTextArea("Player has selected " + destinationNodeId + " country to which he want" +
+                                "to fortify.");
+                        int noofArmies = playersList.get(currentPlayer).getTerritoriesHeld().get(sourceNodeId).getArmiesHeld();
+                        sourceText.setText(Integer.toString(noofArmies));
+
+                        noofArmies = playersList.get(currentPlayer).getTerritoriesHeld().get(destinationNodeId).getArmiesHeld();
+                        destinationText.setText(Integer.toString(noofArmies));
+
+                        count = 0;
+                        pvcInstance.addTextToTextArea("Player has sucessfully done the fotification.");
+                        finishedMove();
+                    } else {
+                        fortifyButtonAction();
+                    }
+                } else {
+                    System.out.println("The selected country is not adjacent. Please select another country");
+                    pvcInstance.addTextToTextArea("The selected country is not adjacent. Please select another country");
+                    displayToWhichCountryPlayerFortify(true);
+                }
+            } else {
+                System.out.println("Both source country and destination country are equal. Select the another country.");
+                pvcInstance.addTextToTextArea("The selected country is not adjacent. Please select another country");
+                displayToWhichCountryPlayerFortify(true);
+            }
+        }
+    }
+    
     /**
      * This loads the players domination view where we can see the players control over the map
      * and other actions.

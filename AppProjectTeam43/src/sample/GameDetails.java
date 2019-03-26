@@ -315,10 +315,7 @@ public class GameDetails {
                                     adjlist.remove(0);
                                     adjlist.remove(0);
 
-                                    territoriesList.put(splitTerritorie[0].trim(),new Territories(splitTerritorie[0].trim(),Integer.parseInt(splitTerritorie[1]),
-                                            Integer.parseInt(splitTerritorie[2]),splitTerritorie[3],adjlist));
-                                    adjacentterritoriesList.add(new Territories(splitTerritorie[0],Integer.parseInt(splitTerritorie[1]),
-                                            Integer.parseInt(splitTerritorie[2]),continentList.get(i).getContinentName(),adjlist));
+                                    
                                 }
                             }
                         } else {

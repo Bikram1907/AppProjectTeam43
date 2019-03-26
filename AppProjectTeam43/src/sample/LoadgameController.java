@@ -635,6 +635,31 @@ public class LoadgameController {
     }
     
     /**
+     * This function will implement the logic according to the battle result.
+     * @param battleResult
+     * @param opponentPlayerIndex
+     */
+    public void determineWhatToHappenAfterBattle(String battleResult,int opponentPlayerIndex) {
+
+        if(battleResult.equalsIgnoreCase(WINNER)) {
+            System.out.println("Congratulations, You won the battle.");
+            pvcInstance.addTextToTextArea("Congratulation, You won the battle.");
+            isVisibleDefenderProperties(false);
+            battleWinnerAction(opponentPlayerIndex);
+
+        } else if(battleResult.equalsIgnoreCase(LOSER)) {
+            System.out.println("Player" +currentPlayer + " lost the battle");
+            pvcInstance.addTextToTextArea("Player" +currentPlayer + " lost the battle");
+            updateThePlayerFieldsAfterAttack(opponentPlayerIndex);
+
+        } else if(battleResult.equalsIgnoreCase(TIE)) {
+            System.out.println("The battle is a TIE");
+            pvcInstance.addTextToTextArea("The battle is a TIE");
+            updateThePlayerFieldsAfterAttack(opponentPlayerIndex);
+        }
+    }
+    
+    /**
      * This method will update the player fields after attack is done.
      * @param opponentPlayerIndex
      */

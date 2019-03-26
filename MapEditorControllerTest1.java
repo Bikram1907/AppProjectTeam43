@@ -20,4 +20,8 @@ public class MapEditorControllerTest1 {
     public void setUp() throws Exception {
         validfile = new File("E:\\IntelliJ\\AppProject\\src\\resources\\Maps\\invalid.map");
     }
+    
+     @After
+    public void tearDown() throws Exception {
+    }
 }

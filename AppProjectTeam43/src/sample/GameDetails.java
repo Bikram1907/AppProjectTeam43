@@ -449,7 +449,7 @@ public class GameDetails {
     public void InitializeArmies(int index) {
 
         // Assign armies based on the no of players.
-        noofArmies.put(2,36);
+        noofArmies.put(2,40);
         noofArmies.put(3,35);
         noofArmies.put(4,30);
         noofArmies.put(5,25);

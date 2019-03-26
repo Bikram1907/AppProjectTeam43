@@ -605,6 +605,27 @@ public class LoadgameController {
     }
     
     /**
+     * To display the defender Dice to the window
+     * @param defenderDiceList
+     */
+    public void displayDefenderDiceToTheConsole(ArrayList<Integer> defenderDiceList) {
+
+        switch(defenderDiceList.size()) {
+            case 1:
+                defenderDice1 = new Image("resources/RedDice"+defenderDiceList.get(0));
+                defenderDiceView1.setImage(defenderDice1);
+                break;
+
+            case 2:
+                defenderDice1 = new Image("resources/RedDice"+defenderDiceList.get(0));
+                defenderDice2 = new Image("resources/RedDice"+defenderDiceList.get(0));
+                defenderDiceView1.setImage(defenderDice1);
+                defenderDiceView2.setImage(defenderDice2);
+                break;
+        }
+    }
+    
+    /**
      * To display or hide the dice image views.
      * @param value
      */

@@ -73,4 +73,18 @@ public class PlayerTest1 {
         playerList.get(1).getTerritoriesHeld().remove("Venezuala");
         assertEquals(playerList.get(0).getTerritoriesHeld().size(),22);
     }
+    
+     @Test
+    public void removeTerritory() {
+        Territories territory = playerList.get(1).getTerritoriesHeld().get("Venezuala");
+        playerList.get(1).removeTerritory(territory);
+        assertEquals(playerList.get(1).getTerritoriesHeld().size(),20);
+    }
+
+    @Test
+    public void addContinent() {
+        Continent continent = GameDetails.getGamedetails().getgamedetails().get(0).getContinentList().get(0);
+        playerList.get(0).addContinent(continent);
+        assertEquals(playerList.get(0).getContinentHeld().size(),1);
+    }
 }

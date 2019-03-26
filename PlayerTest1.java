@@ -87,4 +87,18 @@ public class PlayerTest1 {
         playerList.get(0).addContinent(continent);
         assertEquals(playerList.get(0).getContinentHeld().size(),1);
     }
+    
+    @Test
+    public void removeContinent() {
+        Continent continent = GameDetails.getGamedetails().getgamedetails().get(0).getContinentList().get(0);
+        playerList.get(0).addContinent(continent);
+        playerList.get(0).removeContinent(continent.getContinentName());
+        assertEquals(playerList.get(0).getContinentHeld().size(),0);
+    }
+
+    @Test
+    public void calculateReinforcementArmies() {
+        playerList.get(0).calculateReinforcementArmies();
+        assertEquals(playerList.get(0).getPlayerArmies(),26);
+    }
 }

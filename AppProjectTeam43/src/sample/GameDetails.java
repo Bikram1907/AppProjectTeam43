@@ -30,6 +30,8 @@ public class GameDetails {
     private HashMap<Integer,Integer> noofArmies = new HashMap<Integer, Integer>();
     private String currentGamePhase;
     private int currentPlayer = 0;
+    private int mapSize;
+    private List<Card> cardsList = new ArrayList<>();
 
 
     /**

@@ -34,4 +34,26 @@ public class PlayerTest1 {
         GameDetails.getGamedetails().distributeArmiestoTerritories(0);
         playerList = GameDetails.getGamedetails().getgamedetails().get(0).getPlayersList();
     }
+    
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void increaseArmyCountByValue() {
+        playerList.get(0).increaseArmyCountByValue(5);
+        assertEquals(playerList.get(0).getPlayerArmies(),24);
+    }
+
+    @Test
+    public void decreaseArmyCountByValue() {
+        playerList.get(0).decreaseArmyCountByValue(5);
+        assertEquals(playerList.get(0).getPlayerArmies(),14);
+    }
+
+    @Test
+    public void addCard() {
+        playerList.get(0).addCard(new Card("ALASKA","INFANTRY"));
+        assertEquals(playerList.get(0).getCardsHeld().size(),1);
+    }
 }

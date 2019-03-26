@@ -605,6 +605,21 @@ public class LoadgameController {
     }
     
     /**
+     * This method returns a random card from a deck of cards;
+     * @return Card
+     */
+    public Card generateRandomCard() {
+
+        int min = 0;
+        int max = cardsList.size()-1;
+        int range = max - min + 1;
+        int randomIndex = (int) (Math.random() * range) + min;
+        Card card = cardsList.get(randomIndex);
+        cardsList.remove(randomIndex);
+        return card;
+    }
+    
+    /**
      * To check if the player has won any continent.
      * @param territoryWon
      * @return boolean

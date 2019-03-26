@@ -635,6 +635,21 @@ public class LoadgameController {
     }
     
     /**
+     * To find the player who hold the particular territory.
+     * @param country
+     * @return position of player object in arraylist
+     */
+    public int findPlayerofTheTerritory(Text country) {
+
+        for(int i = 0; i<playersList.size(); i++) {
+            if(playersList.get(i).getTerritoriesHeld().containsKey(country.getId())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    /**
      * To set visible or hide the attack and fortify buttons.
      * @param value
      */

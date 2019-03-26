@@ -635,6 +635,16 @@ public class LoadgameController {
     }
     
     /**
+     * This function displays the label and textfield of the ountry from which player can start fortify.
+     */
+    public void fortifyButtonAction() {
+
+        gd.setGamePhase(FORTIFICATIONPHASE);
+        isVisibleAttackOrFortifyButtons(false);
+        displayFromWhichCountryPlayerForitify(true);
+    }
+    
+    /**
      * This functions implements the card exchange view.
      */
     public void loadCardsExchangeView() {

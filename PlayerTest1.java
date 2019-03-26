@@ -56,4 +56,21 @@ public class PlayerTest1 {
         playerList.get(0).addCard(new Card("ALASKA","INFANTRY"));
         assertEquals(playerList.get(0).getCardsHeld().size(),1);
     }
+    
+    @Test
+    public void removeCard() {
+        playerList.get(0).addCard(new Card("ALASKA","INFANTRY"));
+        Card card = new Card("AUSTRALIA","CAVALRY");
+        playerList.get(0).addCard(card);
+        playerList.get(0).removeCard(card);
+        assertEquals(playerList.get(0).getCardsHeld().size(),1);
+    }
+
+    @Test
+    public void addTerritory() {
+        Territories territory = playerList.get(1).getTerritoriesHeld().get("Venezuala");
+        playerList.get(0).addTerritory(territory);
+        playerList.get(1).getTerritoriesHeld().remove("Venezuala");
+        assertEquals(playerList.get(0).getTerritoriesHeld().size(),22);
+    }
 }

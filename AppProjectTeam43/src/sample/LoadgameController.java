@@ -635,6 +635,20 @@ public class LoadgameController {
     }
     
     /**
+     * This method displays the label and text field to select the attacked country.
+     * @param value
+     */
+    public void isVisibleDefenderProperties(boolean value) {
+
+        attackedCountryLabel.setVisible(value);
+        attackedCountryTextField.setVisible(value);
+        diceLabel.setVisible(value);
+        diceTextField.setVisible(value);
+        attackProceedButton.setVisible(value);
+    }
+
+    
+    /**
      * To set visible or hide the cards exchange and skip buttons.
      * @param value
      */

@@ -634,6 +634,16 @@ public class LoadgameController {
         }
     }
     
+    /**
+     * To display to which country player want to fortify.
+     * @param value
+     */
+    public void displayToWhichCountryPlayerFortify(boolean value) {
+
+        toCountryLabel.setVisible(value);
+        toCountryTextField.setVisible(value);
+    }
+    
      /**
      * This method will display the confirmation button when selecting the source and destination countries and
      * if both source and destination are different, then it will ask the player how many armies he want to move

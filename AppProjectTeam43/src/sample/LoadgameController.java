@@ -635,6 +635,31 @@ public class LoadgameController {
     }
     
     /**
+     * This function updates the armies field of the current player.
+     */
+    public void updateThePlayerArmyField() {
+
+        if(currentPlayer == 0) {
+            armiesPlayer1.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+
+        } else if(currentPlayer == 1) {
+            armiesPlayer2.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+
+        } else if(currentPlayer == 2) {
+            armiesPlayer3.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+
+        } else if(currentPlayer == 3) {
+            armiesPlayer4.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+
+        } else if(currentPlayer == 4) {
+            armiesPlayer5.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+
+        } else if(currentPlayer == 5) {
+            armiesPlayer6.setText(Integer.toString(playersList.get(currentPlayer).getPlayerArmies()));
+        }
+    }
+    
+    /**
      * This functions is used to skip from reinforcement phase to attack phase or fortify phase.
      */
     public void skipToNextPhase() {

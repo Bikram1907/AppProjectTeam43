@@ -635,6 +635,27 @@ public class LoadgameController {
     }
     
     /**
+     * This loads the phase view.
+     */
+    public void loadPhaseView() {
+
+        phaseViewLoader = new FXMLLoader(getClass().getResource("/sample/view/PhaseView.fxml"));
+        try{
+            Parent root = phaseViewLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("PhaseView Window");
+            stage.setScene(new Scene(root,800,700));
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load the phase view.");
+            e.printStackTrace();
+            return;
+        }
+    }
+    
+    /**
      * To find the player who hold the particular territory.
      * @param country
      * @return position of player object in arraylist

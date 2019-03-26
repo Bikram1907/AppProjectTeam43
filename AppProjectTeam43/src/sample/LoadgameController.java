@@ -520,6 +520,36 @@ public class LoadgameController {
     }*/
 
     /**
+     * To display the attackerDice to the window.
+     * @param attackerDiceList
+     */
+    public void displayAttackerDiceToTheConsole(ArrayList<Integer> attackerDiceList) {
+
+        switch(attackerDiceList.size()) {
+            case 1:
+                attackerDice1 = new Image("resources/WhiteDice"+attackerDiceList.get(0));
+                attackerDiceView1.setImage(attackerDice1);
+                break;
+
+            case 2:
+                attackerDice1 = new Image("resources/WhiteDice"+attackerDiceList.get(0));
+                attackerDice2 = new Image("resources/WhiteDice"+attackerDiceList.get(1));
+                attackerDiceView1.setImage(attackerDice1);
+                attackerDiceView2.setImage(attackerDice2);
+                break;
+
+            case 3:
+                attackerDice1 = new Image("resources/WhiteDice"+attackerDiceList.get(0));
+                attackerDice2 = new Image("resources/WhiteDice"+attackerDiceList.get(1));
+                attackerDice3 = new Image("resources/WhiteDice"+attackerDiceList.get(2));
+                attackerDiceView1.setImage(attackerDice1);
+                attackerDiceView2.setImage(attackerDice2);
+                attackerDiceView3.setImage(attackerDice3);
+                break;
+        }
+    }
+    
+    /**
      * This will display or disable the player1 stats to the game panel.
      * @param value
      */

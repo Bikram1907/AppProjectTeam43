@@ -172,4 +172,23 @@ public class PlayerTest1 {
 
         assertEquals(result,"TIE");
     }
+    
+    @Test
+    public void checkIfATerritoryHasLostAllArmies() {
+        assertFalse(playerList.get(0).checkIfATerritoryHasLostAllArmies("Peru"));
+    }
+
+    @Test
+    public void checkIfPlayerHasLostAllCountries() {
+        assertFalse(playerList.get(0).checkIfPlayerHasLostAllCountries());
+    }
+
+    @Test
+    public void transferCardsFromOnePlayerToAnother() {
+        Card card = new Card("ALASKA","INFANTRY");
+        playerList.get(1).addCard(card);
+        playerList.get(1).transferCardsFromOnePlayerToAnother(playerList.get(0));
+        assertEquals(playerList.get(0).getCardsHeld().size(),1);
+        assertEquals(playerList.get(1).getCardsHeld().size(),0);
+    }
 }

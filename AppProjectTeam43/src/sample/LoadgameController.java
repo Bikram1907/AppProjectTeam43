@@ -605,6 +605,20 @@ public class LoadgameController {
     }
     
     /**
+     * To display or hide the dice image views.
+     * @param value
+     */
+    public void displayOrHideTheDiceImageView(boolean value) {
+
+        attackerDiceView1.setVisible(value);
+        attackerDiceView2.setVisible(value);
+        attackerDiceView3.setVisible(value);
+
+        defenderDiceView1.setVisible(value);
+        defenderDiceView2.setVisible(value);
+    }
+    
+    /**
      * This method returns a random card from a deck of cards;
      * @return Card
      */

@@ -635,6 +635,17 @@ public class LoadgameController {
     }
     
     /**
+     * To display the details from which player can foritify the territory
+     * @param value
+     */
+    public void displayFromWhichCountryPlayerForitify(boolean value) {
+
+        selectFromLabel.setVisible(value);
+        fromCountryTextField.setVisible(value);
+    }
+
+    
+    /**
      * To display to which country player want to fortify.
      * @param value
      */

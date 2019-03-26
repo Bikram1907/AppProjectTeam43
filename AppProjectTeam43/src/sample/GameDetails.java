@@ -301,7 +301,9 @@ public class GameDetails {
                             while((line = br.readLine()) != null) {
                                 if(line.trim().isEmpty()){
                                     if(continentList.size() > i) {
-                                       
+                                       continentList.get(i).copyArrayListElementsToAnother(adjacentterritoriesList);
+                                        System.out.println(adjacentterritoriesList.size());
+                                        adjacentterritoriesList.clear();
                                     }
                                     i++;
                                 } else {

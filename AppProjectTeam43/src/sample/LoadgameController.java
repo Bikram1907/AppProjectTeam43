@@ -603,6 +603,21 @@ public class LoadgameController {
             }
         }
     }
+    
+    /**
+     * To check if the player has lost the continent.
+     * @param territoryLost
+     * @param defenderPlayerIndex
+     * @return boolean
+     */
+    public boolean checkIfPlayerHasLostTheContinent(Text territoryLost,int defenderPlayerIndex) {
+
+        Territories territory = playersList.get(defenderPlayerIndex).getTerritoriesHeld().get(territoryLost.getId());
+        if(playersList.get(defenderPlayerIndex).getContinentHeld().containsKey(territory.getContinentName())) {
+            return true;
+        }
+        return false;
+    }
 
      /**
      * This function removes the continent from the player list, if the player has lost the territory during

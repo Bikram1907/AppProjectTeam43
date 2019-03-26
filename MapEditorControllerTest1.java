@@ -24,4 +24,9 @@ public class MapEditorControllerTest1 {
      @After
     public void tearDown() throws Exception {
     }
+    
+    @Test
+    public void saveContent() {
+        assertFalse(mecObject.ismapValid(validfile,"EDITMAP"));
+    }
 }

@@ -132,4 +132,44 @@ public class PlayerTest1 {
         ArrayList<Integer> diceList = playerList.get(0).rollDice(3);
         assertEquals(diceList.size(),3);
     }
+    @Test
+    public void determineWinner() {
+        ArrayList<Integer> diceA = new ArrayList<Integer>();
+        diceA.add(5);
+        diceA.add(3);
+        diceA.add(2);
+
+        ArrayList<Integer> diceB = new ArrayList<Integer>();
+        diceA.add(4);
+        diceA.add(4);
+
+        int attackerDecreamentArmy=0,attackedDecreamentArmy=0,index = 0;
+
+        if(diceB.size() < diceA.size()) {
+            index = diceB.size();
+        } else if(diceA.size() < diceB.size()) {
+            index = diceA.size();
+        } else if(diceA.size() == diceB.size()) {
+            index = diceB.size();
+        }
+
+        for(int i = 0; i<index; i++) {
+            if(diceA.get(i) > diceB.get(i)) {
+                attackedDecreamentArmy++;
+            } else {
+                attackerDecreamentArmy++;
+            }
+        }
+
+        String result = "";
+        if(attackerDecreamentArmy < attackedDecreamentArmy) {
+            result = "WINNER";
+        } else if(attackerDecreamentArmy > attackedDecreamentArmy) {
+            result = "LOSER";
+        } else if(attackedDecreamentArmy == attackerDecreamentArmy) {
+            result = "TIE";
+        }
+
+        assertEquals(result,"TIE");
+    }
 }

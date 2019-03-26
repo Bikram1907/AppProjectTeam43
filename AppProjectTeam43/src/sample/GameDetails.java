@@ -413,8 +413,10 @@ public class GameDetails {
             j = i + 1;
             HashMap<String,Territories> territoriesHeld = new HashMap<String,Territories>();
             playersList.add(new Player("Player"+j,0,false,"None",playerColors.get(i),0));
-            
-            
+             playersList.get(i).setTerritoriesHeld(new HashMap<String,Territories>());
+            playersList.get(i).setContinentHeld(new HashMap<String,Continent>());
+            playersList.get(i).setCardTurn(1);
+            playersList.get(i).setCardsHeld(new ArrayList<Card>());
         }
 
         

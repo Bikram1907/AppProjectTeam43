@@ -604,13 +604,7 @@ public class LoadgameController {
         }
     }
 
-    /**
-     * Calculate the reinforcement armies for each player.
-     */
-    public int calculateReinforcementArmies() {
-
-        return playersList.get(currentPlayer).getTerritoriesHeld().size() / 3;
-    }
+   
     
     /**
      * To get the continent index from the list of continents.

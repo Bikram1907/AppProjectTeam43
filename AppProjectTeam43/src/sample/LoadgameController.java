@@ -635,6 +635,36 @@ public class LoadgameController {
     }
     
     /**
+     * get the no of armies to move after winning the territory from the player.
+     */
+    @FXML
+    public void getTheNoOfArmiesToMoveFromPlayerAfterWinningTerritory() {
+
+        System.out.println("Confirm button has been clicked");
+        int getNumberofArmiesToMove = Integer.parseInt(armiesToMoveTextField.getText());
+        pvcInstance.addTextToTextArea("The Player has choosen the armies to move is = " + getNumberofArmiesToMove);
+        System.out.println("getNumberofArmiesToMove = " + getNumberofArmiesToMove);
+
+        if(playersList.get(currentPlayer).getTerritoriesHeld().get(attackerCountryNode.getId())
+                .getArmiesHeld() > getNumberofArmiesToMove) {
+            System.out.println("You can move the armies.");
+
+            if(playersList.get(currentPlayer).doFortification(getNumberofArmiesToMove,attackerCountryNode.getId()
+                    ,defenderCountryNode.getId())) {
+                attackerCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld()
+                        .get(attackerCountryNode.getId()).getArmiesHeld()));
+                defenderCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld()
+                        .get(defenderCountryNode.getId()).getArmiesHeld()));
+
+                System.out.println("Successfully Move the armies to the location");
+                pvcInstance.addTextToTextArea("Successfully Move the armies to the location");
+                displayNumberOfArmiesYouWantToMoveAfterWinningTerritory(false);
+                resetTheControlsAfterAttackIsDone();
+            }
+        }
+    }
+    
+    /**
      * This function displays the label and textfield of the ountry from which player can start fortify.
      */
     public void fortifyButtonAction() {

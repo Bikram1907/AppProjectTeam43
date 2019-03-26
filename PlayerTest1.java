@@ -101,4 +101,35 @@ public class PlayerTest1 {
         playerList.get(0).calculateReinforcementArmies();
         assertEquals(playerList.get(0).getPlayerArmies(),26);
     }
+    
+    @Test
+    public void canFortify() {
+        assertTrue(playerList.get(0).canFortify("Peru","Brazil"));
+    }
+
+    @Test
+    public void doFortification() {
+        playerList.get(0).getTerritoriesHeld().get("Peru").setArmiesHeld(10);
+        playerList.get(0).doFortification(3,"Peru","Brazil");
+        assertEquals(playerList.get(0).getTerritoriesHeld().get("Brazil").getArmiesHeld(),4);
+        assertEquals(playerList.get(0).getTerritoriesHeld().get("Peru").getArmiesHeld(),7);
+    }
+
+    @Test
+    public void canAttack() {
+        assertTrue(playerList.get(0).canAttack("Peru","Venezuala"));
+    }
+
+    @Test
+    public void doAttack() {
+        playerList.get(0).getTerritoriesHeld().get("Peru").setArmiesHeld(10);
+        assertNotEquals(playerList.get(0).doAttack(3,2,"Peru","Venezuala",playerList.get(1)),"WINNER");
+    }
+
+    @Test
+    public void rollDice() {
+
+        ArrayList<Integer> diceList = playerList.get(0).rollDice(3);
+        assertEquals(diceList.size(),3);
+    }
 }

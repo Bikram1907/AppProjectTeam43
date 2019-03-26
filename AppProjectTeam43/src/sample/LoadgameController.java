@@ -635,6 +635,28 @@ public class LoadgameController {
     }
     
     /**
+     * This loads the players domination view where we can see the players control over the map
+     * and other actions.
+     */
+    public void loadPlayersDominationView() {
+
+        loader = new FXMLLoader(getClass().getResource("/sample/view/PlayersDominationView.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("PlayersDominationWindow");
+            stage.setScene(new Scene(root,600,448));
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load the players domination view.");
+            e.printStackTrace();
+            return;
+        }
+    }
+    
+    /**
      * This loads the phase view.
      */
     public void loadPhaseView() {

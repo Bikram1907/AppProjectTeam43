@@ -355,6 +355,12 @@ public class GameDetails {
             System.out.println("TerritoriesList size is = " + territoriesList.size());
             GameDetails.getGamedetails().getgamedetails().get(index).setContinentList(continentList);
             GameDetails.getGamedetails().getgamedetails().get(index).setTerritoriesList(territoriesList);
+            
+            cardsList.add(new Card("None","WILD"));
+            cardsList.add(new Card("NONE1","WILD"));
+
+            GameDetails.getGamedetails().getgamedetails().get(index).setCardsList(cardsList);
+
 
             System.out.println("Loaded the Map files into the List.");
 

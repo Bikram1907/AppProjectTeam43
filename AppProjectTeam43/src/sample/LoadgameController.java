@@ -635,6 +635,81 @@ public class LoadgameController {
     }
     
     /**
+     * This function will implement the logic when the battle is won by the player
+     * checks if the player has won the territory, if yes the it checks it results in the winning the
+     * continent. And also it draws a card if player has won any territory during the battle.
+     * checks if the defending player has lost the territory, if yes then it check if it results in loosing the
+     * continent. if yes it removes the continent.
+     * @param opponentPlayerIndex
+     */
+    public void battleWinnerAction(int opponentPlayerIndex) {
+
+        if(playersList.get(opponentPlayerIndex).checkIfATerritoryHasLostAllArmies(defenderCountryNode.getId())) {
+            Territories territory = playersList.get(opponentPlayerIndex).getTerritoriesHeld().get(defenderCountryNode.getId());
+
+            displayNumberOfArmiesYouWantToMoveAfterWinningTerritory(true);
+
+            // set the player of defeated country to attacker
+            territory.setPlayer(playersList.get(currentPlayer).getPlayerName());
+            playersList.get(currentPlayer).getTerritoriesHeld().put(territory.getTerritorieName(),territory);
+
+            // check if the attacker has won the continent.
+            if(checkIfPlayerHasWonAnyContinent(defenderCountryNode)) {
+                System.out.println("Congratulations, you have won the continent");
+                assignTheContinentToThePlayer(defenderCountryNode);
+            }
+
+            // check if the attacked player has lost the continent due to attack phase.
+            if(checkIfPlayerHasLostTheContinent(defenderCountryNode,opponentPlayerIndex)) {
+                System.out.println("The Player has lost the continent");
+                removeThecontinentFromThePlayerList(defenderCountryNode,opponentPlayerIndex);
+            }
+
+            // Then, remove the defeated country from the player list
+            playersList.get(opponentPlayerIndex).getTerritoriesHeld().remove(defenderCountryNode.getId());
+
+            defenderCountryNode.setFill(playersList.get(currentPlayer).getPlayerColor());
+            defenderCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld().get(defenderCountryNode.getId()
+            ).getArmiesHeld()));
+            attackerCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld()
+                    .get(attackerCountryNode.getId()).getArmiesHeld()));
+
+            moveTextNodeFromOneGroupToAnother(defenderCountryNode,opponentPlayerIndex);
+            isPlayerWonTheTerritoryDuringTheAttack = true;
+
+            // if attacked country player lost all the countries then remove the player from the list
+            // Transfer the cards to the attacker.
+            if(playersList.get(opponentPlayerIndex).checkIfPlayerHasLostAllCountries()) {
+                playersList.get(opponentPlayerIndex).transferCardsFromOnePlayerToAnother(playersList.get(currentPlayer));
+                playersList.get(opponentPlayerIndex).setKnocked(true);
+                System.out.println("The " + playersList.get(opponentPlayerIndex).getPlayerName() + " has been" +
+                        "knocked out.");
+                playersList.remove(opponentPlayerIndex);
+                displayCardStats();
+            }
+
+            if(playersList.get(currentPlayer).getTerritoriesHeld().size() == gd.getMapSize()) {
+
+                Alert WinAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                WinAlert.setTitle("Win Alert");
+                WinAlert.setContentText("Congratulation, you won the game.");
+                Optional<ButtonType> result = WinAlert.showAndWait();
+                if(result.isPresent() && result.get() == ButtonType.OK) {
+                    pdvcInstance.closeWindow();
+                    pvcInstance.closeWindow();
+                    closeWindow();
+                }
+            }
+        } else {
+            attackerCountryNode.setText(Integer.toString(playersList.get(currentPlayer).getTerritoriesHeld()
+                    .get(attackerCountryNode.getId()).getArmiesHeld()));
+            defenderCountryNode.setText(Integer.toString(playersList.get(opponentPlayerIndex).getTerritoriesHeld()
+                    .get(defenderCountryNode.getId()).getArmiesHeld()));
+            displayNumberOfArmiesYouWantToMoveAfterWinningTerritory(true);
+        }
+    }
+    
+    /**
      * get the no of armies to move after winning the territory from the player.
      */
     @FXML

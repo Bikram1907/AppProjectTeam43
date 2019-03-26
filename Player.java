@@ -447,6 +447,48 @@ public class Player extends Observable {
         Collections.sort(diceList,Collections.reverseOrder());
         return diceList;
     }
+    /**
+     * This function determines the winner of the battle.
+     * @param attackerDiceList
+     * @param attackedDiceList
+     * @param defender
+     * @return Battle result
+     */
+    public String determineWinner(ArrayList<Integer> attackerDiceList,ArrayList<Integer> attackedDiceList
+            ,Player defender,String attackedCountry, String attackerCountry) {
+
+        int attackerDecreamentArmy=0,attackedDecreamentArmy=0,index = 0;
+
+        if(attackedDiceList.size() < attackerDiceList.size()) {
+            index = attackedDiceList.size();
+        } else if(attackerDiceList.size() < attackedDiceList.size()) {
+            index = attackerDiceList.size();
+        } else if(attackerDiceList.size() == attackedDiceList.size()) {
+            index = attackedDiceList.size();
+        }
+
+        for(int i = 0; i<index; i++) {
+            if(attackerDiceList.get(i) > attackedDiceList.get(i)) {
+                attackedDecreamentArmy++;
+            } else {
+                attackerDecreamentArmy++;
+            }
+        }
+
+        territoriesHeld.get(attackerCountry).decreaseArmyCountByvalue(attackerDecreamentArmy);
+        defender.getTerritoriesHeld().get(attackedCountry).decreaseArmyCountByvalue(attackedDecreamentArmy);
+
+        if(attackerDecreamentArmy < attackedDecreamentArmy) {
+            return "WINNER";
+        } else if(attackerDecreamentArmy > attackedDecreamentArmy) {
+            return "LOSER";
+        } else if(attackedDecreamentArmy == attackerDecreamentArmy) {
+            return "TIE";
+        }
+
+        return "";
+    }
+
 
 
 

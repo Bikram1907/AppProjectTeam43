@@ -413,9 +413,11 @@ public class GameDetails {
             j = i + 1;
             HashMap<String,Territories> territoriesHeld = new HashMap<String,Territories>();
             playersList.add(new Player("Player"+j,0,false,"None",playerColors.get(i),0));
-            playersList.get(i).setTerritoriesHeld(territoriesHeld);
+            
+            
         }
 
+        
         // Add the playerslist of type arraylist to the gamedetails class object.
         gamedetails.get(index).setPlayersList(playersList);
 

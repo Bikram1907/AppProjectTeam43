@@ -605,6 +605,17 @@ public class LoadgameController {
     }
     
     /**
+     * To assign the continent to the player.
+     * @param territoryWon
+     */
+    public void assignTheContinentToThePlayer(Text territoryWon) {
+
+        Territories territory = playersList.get(currentPlayer).getTerritoriesHeld().get(territoryWon.getId());
+        int continentIndex = getIndexOfTheContinent(territory.getContinentName());
+        playersList.get(currentPlayer).addContinent(continentList.get(continentIndex));
+    }
+    
+    /**
      * To check if the player has lost the continent.
      * @param territoryLost
      * @param defenderPlayerIndex

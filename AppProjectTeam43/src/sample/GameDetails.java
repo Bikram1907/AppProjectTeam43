@@ -325,7 +325,7 @@ public class GameDetails {
                             // Reads the continents from the map file.
                             if(!(line.trim().isEmpty())){
                                 String splitString[] = line.trim().split("=");
-                                continentList.add(new Continent(splitString[0].trim(),Integer.parseInt(splitString[1].trim())));
+                                continentList.add(new Continent(splitString[0].trim(),Integer.parseInt(splitString[1].trim()),new ArrayList<>()));
                                 System.out.println("Name = "+splitString[0]+" Score = "+splitString[1]);
                             }
                         }

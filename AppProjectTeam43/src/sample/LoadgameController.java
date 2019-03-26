@@ -611,6 +611,26 @@ public class LoadgameController {
 
         return playersList.get(currentPlayer).getTerritoriesHeld().size() / 3;
     }
+    
+    /**
+     * To get the continent index from the list of continents.
+     * @param continentName
+     * @return continentIndex
+     */
+    public int getIndexOfTheContinent(String continentName) {
+
+        System.out.println("Continent name is = " + continentName);
+        int size = continentList.size();
+        System.out.println("SIze is = " + size);
+        for(int i = 0; i<size; i++) {
+            Continent continent = continentList.get(i);
+            if(continent.getContinentName().equalsIgnoreCase(continentName)) {
+                System.out.println("Continent index is = " + i);
+                return i;
+            }
+        }
+        return -1;
+    }
 
     /**
      * This closes the window and returns to the main window.

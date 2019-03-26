@@ -529,18 +529,6 @@ public class GameDetails {
                 }
             }
 
-            if(playerArmies > 0) {
-                String[] keys = gamedetails.get(index).getPlayersList().get(i).getTerritoriesHeld().keySet().toArray(new
-                        String[gamedetails.get(index).getPlayersList().get(i).getTerritoriesHeld().size()]);
-                do {
-                    String countryKey = keys[new Random().nextInt(keys.length)];
-                    Territories territory = gamedetails.get(index).getPlayersList().get(i).getTerritoriesHeld()
-                            .get(countryKey);
-                    territory.increamentarmyCountby1();
-                    playerArmies -= 1;
-                } while(playerArmies > 0);
-
-                gamedetails.get(index).getPlayersList().get(i).setPlayerArmies(0);
             }
         }
     }

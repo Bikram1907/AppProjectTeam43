@@ -635,6 +635,16 @@ public class LoadgameController {
     }
     
     /**
+     * To set visible or hide the attack and fortify buttons.
+     * @param value
+     */
+    public void isVisibleAttackOrFortifyButtons(boolean value) {
+
+        attackButton.setVisible(value);
+        fortifyButton.setVisible(value);
+    }
+    
+    /**
      * This method dispays the attacker label and text field in the attack phase to select the attackers country.
      * @param value
      */

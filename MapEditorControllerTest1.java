@@ -29,4 +29,12 @@ public class MapEditorControllerTest1 {
     public void saveContent() {
         assertFalse(mecObject.ismapValid(validfile,"EDITMAP"));
     }
+    
+    @Test
+    public void ismapValid() {
+        GameDetails.getGamedetails().clearData();
+        GameDetails.getGamedetails().getgamedetails().add(new GameDetails(validfile,"EDITMAP"));
+        GameDetails.getGamedetails().createMap(0);
+        assertFalse(GameDetails.getGamedetails().validateMap(0));
+    }
 }

@@ -233,5 +233,26 @@ public class CardExchangeController {
             return "NONE";
         }
     }
+    
+     /**
+     * This function removes the cards from the player and
+     * adds the cards to original cards list.
+     * @param type
+     * @param count
+     */
+    public void removeTheSetFromPlayerCards(String type,int count) {
+
+        int size = 1;
+        for(int i = 0; i<cardsList.size(); i++) {
+            Card card = cardsList.get(i);
+            if(card.getCardType().equalsIgnoreCase(type)) {
+                if(size<=count) {
+                    originalCardList.add(card);
+                    cardsList.remove(i);
+                    size++;
+                }
+            }
+        }
+    }
 }
 

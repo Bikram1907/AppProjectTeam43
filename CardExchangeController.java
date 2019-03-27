@@ -62,3 +62,58 @@ public class CardExchangeController {
         this.playerList = playerList;
     }
 }
+/**
+     * This method gets the current player from the game controller.
+     * @param currentPlayer
+     */
+    public void getCurrentPlayer(int currentPlayer) {
+
+        this.currentPlayer = currentPlayer;
+    }
+
+    /**
+     * This method gets the cards list from the game controller.
+     * @param originalCardList
+     */
+    public void getOriginalCardList(ObservableList<Card> originalCardList) {
+
+        this.originalCardList = originalCardList;
+    }
+
+    /**
+     * This function gets the cards from the player.
+     * @param cardsList
+     */
+    public void getCardsListFromThePlayer(ObservableList<Card> cardsList) {
+
+        this.cardsList = cardsList;
+        addDataToTheListView(cardsList);
+    }
+
+    /**
+     * This method returns the updated cards list to the game controller.
+     * @return
+     */
+    public ObservableList<Card> returnCardsListFromThePlayer() {
+
+        return this.cardsList;
+    }
+
+    /**
+     * This method returns the updated original card list to the game controller.
+     * @return
+     */
+    public ObservableList<Card> returnOrginalCardList() {
+
+        return this.originalCardList;
+    }
+
+    /**
+     * This method returns the updated player list.
+     * @return
+     */
+    public ObservableList<Player> returnPlayerList() {
+
+        return this.playerList;
+    }
+

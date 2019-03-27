@@ -61,7 +61,7 @@ public class CardExchangeController {
 
         this.playerList = playerList;
     }
-}
+
 /**
      * This method gets the current player from the game controller.
      * @param currentPlayer
@@ -116,4 +116,55 @@ public class CardExchangeController {
 
         return this.playerList;
     }
+
+ /**
+     * This method handles the hand in button action.
+     * It checks for the suitable set from the list of cards from the player
+     * if found, then it exchanges the cards for the army
+     */
+    public void handInButtonAction() {
+
+        String result = findSetType();
+        if(result.equalsIgnoreCase("INFANTRY")) {
+            removeTheSetFromPlayerCards("INFANTRY",3);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("CAVALRY")) {
+            removeTheSetFromPlayerCards("CAVALRY",3);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("ARTILLERY")) {
+            removeTheSetFromPlayerCards("ARTILLERY",3);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("ALL")) {
+
+            removeTheSetFromPlayerCards("INFANTRY",1);
+            removeTheSetFromPlayerCards("CAVALRY",1);
+            removeTheSetFromPlayerCards("ARTILLERY",1);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("ICW")) {
+            removeTheSetFromPlayerCards("INFANTRY",1);
+            removeTheSetFromPlayerCards("CAVALRY",1);
+            removeTheSetFromPlayerCards("WILD",1);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("IAW")) {
+            removeTheSetFromPlayerCards("INFANTRY",1);
+            removeTheSetFromPlayerCards("CAVALRY",1);
+            removeTheSetFromPlayerCards("WILD",1);
+            IncreaseTheArmyCount();
+
+        } else if(result.equalsIgnoreCase("CAW")) {
+            removeTheSetFromPlayerCards("CAVALRY",1);
+            removeTheSetFromPlayerCards("ARTILLERY",1);
+            removeTheSetFromPlayerCards("WILD",1);
+            IncreaseTheArmyCount();
+
+        } else {
+            System.out.println("Cannot exchange the cards, there are no proper set to exchange");
+        }
+    }
+}
 

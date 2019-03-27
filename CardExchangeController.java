@@ -254,5 +254,30 @@ public class CardExchangeController {
             }
         }
     }
+    
+     /**
+     * This function finds the how many armies to add to the player list.
+     * @param cardsTurn
+     * @return armies
+     */
+    public int findCorrectSetofArmies(int cardsTurn) {
+
+        if(cardsTurn == 1) {
+            return 4;
+        } else if(cardsTurn == 2) {
+            return 6;
+        } else if(cardsTurn == 3) {
+            return 8;
+        } else if(cardsTurn == 4) {
+            return 10;
+        } else if(cardsTurn == 5) {
+            return 12;
+        } else if(cardsTurn == 6) {
+            return 15;
+        } else if(cardsTurn > 6) {
+            return 15 + (cardsTurn - 6) * 5;
+        }
+        return 0;
+    }
 }
 

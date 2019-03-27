@@ -166,5 +166,14 @@ public class CardExchangeController {
             System.out.println("Cannot exchange the cards, there are no proper set to exchange");
         }
     }
+    
+    /**
+     * This method increase the army of the player after exchanging the cards.
+     */
+    public void IncreaseTheArmyCount() {
+        int noOfArmies = findCorrectSetofArmies(playerList.get(currentPlayer).getCardTurn());
+        playerList.get(currentPlayer).increaseArmyCountByValue(noOfArmies);
+        playerList.get(currentPlayer).setCardTurn(playerList.get(currentPlayer).getCardTurn()+1);
+    }
 }
 

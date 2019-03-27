@@ -175,5 +175,28 @@ public class CardExchangeController {
         playerList.get(currentPlayer).increaseArmyCountByValue(noOfArmies);
         playerList.get(currentPlayer).setCardTurn(playerList.get(currentPlayer).getCardTurn()+1);
     }
+    
+    /**
+     * This method finds set of cards from the player list.
+     * @return
+     */
+    public String findSetType() {
+
+        int infantryCount = 0,cavalryCount = 0,artileryCount = 0,wildCount = 0;
+        for(int i = 0; i<cardsList.size(); i++) {
+            Card card = cardsList.get(i);
+            if(card.getCardType().equalsIgnoreCase("INFANTRY")) {
+                infantryCount++;
+            } else if(card.getCardType().equalsIgnoreCase("CAVALRY")) {
+                cavalryCount++;
+            } else if(card.getCardType().equalsIgnoreCase("ARTILLERY")) {
+                artileryCount++;
+            } else if(card.getCardType().equalsIgnoreCase("WILD")) {
+                wildCount++;
+            }
+        }
+        String result = findCorrectType(infantryCount,cavalryCount,artileryCount,wildCount);
+        return result;
+    }
 }
 

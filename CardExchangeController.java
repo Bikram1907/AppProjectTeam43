@@ -198,5 +198,40 @@ public class CardExchangeController {
         String result = findCorrectType(infantryCount,cavalryCount,artileryCount,wildCount);
         return result;
     }
+    
+    /**
+     * This method returns the type of cards to remove from the players list.
+     * @param infantryCount
+     * @param cavalryCount
+     * @param artileryCount
+     * @return
+     */
+    public String findCorrectType(int infantryCount,int cavalryCount,int artileryCount,int wildCount) {
+
+        if(infantryCount == 3) {
+            return "INFANTRY";
+
+        } else if(cavalryCount ==3) {
+            return "CAVALRY";
+
+        } else if(artileryCount == 3) {
+            return "ARTILLERY";
+
+        } else if(infantryCount != 0 && cavalryCount != 0 && artileryCount != 0) {
+            return "ALL";
+
+        } else if(infantryCount != 0 && cavalryCount != 0 && wildCount != 0) {
+            return "ICW";
+
+        } else if(infantryCount != 0 && artileryCount !=0 && wildCount !=0) {
+            return "IAW";
+
+        } else if(cavalryCount != 0 && artileryCount != 0 && wildCount !=0) {
+            return "CAW";
+
+        } else {
+            return "NONE";
+        }
+    }
 }
 

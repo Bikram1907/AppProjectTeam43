@@ -34,3 +34,25 @@ public class Cheater implements Strategy {
         playersList.get(currentPlayer).setPlayerArmies(0);
         return null;
     }
+     /**
+     * Method returns the attacking countries
+     * @param playersList
+     * @param currentPlayer
+     * @param isPlayerAttackerOrDefender
+     * @return country name
+     */
+    @Override
+    public String attack(ObservableList<Player> playerList, int currentPlayer,String isPlayerAttackerOrDefender) {
+
+        Vector<String> territories = new Vector<>();
+
+        for(String key : playersList.get(currentPlayer).getTerritoriesHeld().keySet()) {
+            Territories territory = playersList.get(currentPlayer).getTerritoriesHeld().get(key);
+            for(String adjacentTerritory : territory.getAdjacentTerritories()) {
+                if(!playersList.get(currentPlayer).getTerritoriesHeld().containsKey(adjacentTerritory)) {
+                    if(!territories.contains(adjacentTerritory)) {
+                        territories.add(adjacentTerritory);
+                    }
+                }
+            }
+

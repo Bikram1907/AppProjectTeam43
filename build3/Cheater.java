@@ -57,7 +57,7 @@ public class Cheater implements Strategy {
             }
         }
               String str = "";
-        if(territories.isEmpty()) {
+        if(!territories.isEmpty()) {
             for(String country : territories) {
                 str += country + ",";
             }

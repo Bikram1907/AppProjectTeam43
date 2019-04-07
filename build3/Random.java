@@ -9,3 +9,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
+
+/**
+ * This class implements the Strategy interface methods.
+ */
+public class Random implements Strategy {
+
+    public Random() {
+    }
+
+    /**
+     * Returns the reinforcing country.
+     * @return reinforcing country
+     */
+    @Override
+    public String reinforce(ObservableList<Player> playersList, int currentPlayer) {
+
+        Territories reinforcingCountry = getRandomTerritory(playersList.get(currentPlayer).getTerritoriesHeld());
+        if(reinforcingCountry != null) {
+            int noofArmies = playersList.get(currentPlayer).getPlayerArmies();
+            playersList.get(currentPlayer).getTerritoriesHeld().get(reinforcingCountry.getTerritorieName())
+                    .increaseArmyCountByValue(noofArmies);
+            playersList.get(currentPlayer).decreaseArmyCountByValue(noofArmies);
+        }
+        return reinforcingCountry.getTerritorieName();
+    }
+}

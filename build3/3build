@@ -97,6 +97,12 @@ public class Aggressive implements Strategy {
 
             if(sourceTerritory !=null && sourceTerritory.getArmiesHeld() > 1) {
                 return sourceTerritory.getTerritorieName();
+            }else{
+            Territories strongCountry = getStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
+            if(strongCountry != null) {
+                return strongCountry.getTerritorieName();
             }
-        } 
+        }
+        return null;
+    }
     }

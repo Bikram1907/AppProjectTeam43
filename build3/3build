@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Aggressive implements Strategy {
 
-    private Territories strongestTerritories;
+    private Territories strongestTerritory;
 
     /**
      * An empty constructor.

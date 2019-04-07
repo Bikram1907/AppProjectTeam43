@@ -42,7 +42,7 @@ public class Cheater implements Strategy {
      * @return country name
      */
     @Override
-    public String attack(ObservableList<Player> playerList, int currentPlayer,String isPlayerAttackerOrDefender) {
+    public String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender) {
 
         Vector<String> territories = new Vector<>();
 
@@ -56,3 +56,4 @@ public class Cheater implements Strategy {
                 }
             }
 
+        }

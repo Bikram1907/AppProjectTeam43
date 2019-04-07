@@ -63,4 +63,40 @@ public class Aggressive implements Strategy {
             return attackedCountry;
         }
     }
+    
+    /**
+     * Returns the source country from where fortification is done and the fortifying country.
+     * @param playersList
+     * @param currentPlayer
+     * @return country name
+     */
+    @Override
+    public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
+
+        if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.SOURCECOUNTRY)) {
+            Territories sourceTerritory = getStrongestCountryAdjacentStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
+            playersList.get(currentPlayer).setSourceCountry(sourceTerritory);
+
+            if(sourceTerritory !=null && sourceTerritory.getArmiesHeld() > 1) {
+                return sourceTerritory.getTerritorieName();
+            }
+        }
+        
+        /**
+     * Returns the source country from where fortification is done and the fortifying country.
+     * @param playersList
+     * @param currentPlayer
+     * @return country name
+     */
+    @Override
+    public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
+
+        if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.SOURCECOUNTRY)) {
+            Territories sourceTerritory = getStrongestCountryAdjacentStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
+            playersList.get(currentPlayer).setSourceCountry(sourceTerritory);
+
+            if(sourceTerritory !=null && sourceTerritory.getArmiesHeld() > 1) {
+                return sourceTerritory.getTerritorieName();
+            }
+        } 
     }

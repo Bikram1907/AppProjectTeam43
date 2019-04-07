@@ -20,6 +20,8 @@ public class Random implements Strategy {
 
     /**
      * Returns the reinforcing country.
+     * @param playersList
+     * @param currentPlayer
      * @return reinforcing country
      */
     @Override

@@ -30,7 +30,7 @@ public class Aggressive implements Strategy {
     @Override
     public String reinforce(ObservableList<Player> playersList, int currentPlayer) {
 
-        Territories territory = getStrongestCountries(playersList.get(currentPlayer).getTerritoriesHeld());
+        Territories territory = getStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
         if(territory != null) {
             int noofArmies = playersList.get(currentPlayer).getPlayerArmies();
             playersList.get(currentPlayer).getTerritoriesHeld().get(territory.getTerritorieName())

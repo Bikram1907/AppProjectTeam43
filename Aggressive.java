@@ -28,7 +28,7 @@ public class Aggressive implements Strategy {
      * @return country name
      */
     @Override
-    public String reinforce(ObservableList<Players> playersList, int currentPlayer) {
+    public String reinforce(ObservableList<Player> playersList, int currentPlayer) {
 
         Territories territory = getStrongestCountries(playersList.get(currentPlayer).getTerritoriesHeld());
         if(territories != null) {

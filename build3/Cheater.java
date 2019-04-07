@@ -55,5 +55,15 @@ public class Cheater implements Strategy {
                     }
                 }
             }
+              String str = " ";
+        if(territories.isEmpty()) {
+            for(String country : territories) {
+                str += country + ",";
+            }
+        }
+        return str.trim();
+    }
+
+
 
         }

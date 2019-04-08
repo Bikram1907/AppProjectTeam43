@@ -72,4 +72,20 @@ public class Benevolent implements Strategy {
         }
         return null;
     }
+    
+    /**
+     * This method returns the weakest territory from the territories of the player.
+     * @param territoriesHeld
+     * @return  country name
+     */
+    public String getWeakestTerritory(HashMap<String, Territories> territoriesHeld) {
+
+        Territories weakTerritory = territoriesHeld.get(territoriesHeld.keySet().toArray()[0]);
+        Vector<Territories> territories = new Vector<>();
+        for(String key : territoriesHeld.keySet()) {
+            Territories territory = territoriesHeld.get(key);
+            if(territory.getArmiesHeld() < weakTerritory.getArmiesHeld()) {
+                weakTerritory = territory;
+            }
+        }
 }

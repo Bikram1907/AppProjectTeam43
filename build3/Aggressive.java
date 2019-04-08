@@ -40,4 +40,14 @@ public class Aggressive implements Strategy {
         }
         return null;
     }
+    
+    
+    @Override
+    public String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender) {
+
+        if(isPlayerAttackerOrDefender.equalsIgnoreCase(Constants.ATTACKER)) {
+            Territories strongestCountry = getStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
+            playersList.get(currentPlayer).setAttackingCountry(strongestCountry);
+            return strongestCountry.getTerritorieName();
+        } 
 }

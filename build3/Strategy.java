@@ -15,4 +15,7 @@ public interface Strategy {
      * @return country name
      */
     String reinforce(ObservableList<Player> playersList, int currentPlayer);
+    
+     String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender);
+
 

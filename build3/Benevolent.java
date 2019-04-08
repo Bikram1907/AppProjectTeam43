@@ -87,5 +87,9 @@ public class Benevolent implements Strategy {
             if(territory.getArmiesHeld() < weakTerritory.getArmiesHeld()) {
                 weakTerritory = territory;
             }
+            
+            if(territory.getArmiesHeld() == 1) {
+                territories.add(territory);
+            }
         }
 }

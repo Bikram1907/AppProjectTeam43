@@ -64,6 +64,16 @@ public class Cheater implements Strategy {
         }
         return str.trim();
     }
+    
+      /**
+     * This method fortifies the armies of the countries having neightbours.
+     * @param playersList
+     * @param currentPlayer
+     * @param isToFindFortifyingCountryOrSourceCountry
+     * @return null
+     */
+    @Override
+
        public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
 
         for(String key : playersList.get(currentPlayer).getTerritoriesHeld().keySet()) {

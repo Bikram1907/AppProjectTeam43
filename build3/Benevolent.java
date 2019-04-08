@@ -23,17 +23,17 @@ public class Benevolent implements Strategy {
      /**
      * This method finds the weakest country to reinforce.
      * @param playersList
-     * @param player
+     * @param currentPlayer
      * @return country name
      */
     @Override
-    public String reinforce(ObservableList<Player> playersList, int player) {
+    public String reinforce(ObservableList<Player> playersList, int currentPlayer) {
 
-        String reinforcingCountry = getWeakestTerritory(playersList.get(player).getTerritoriesHeld());
+        String reinforcingCountry = getWeakestTerritory(playersList.get(currentPlayer).getTerritoriesHeld());
         if(reinforcingCountry != null) {
-            int noofArmies = playersList.get(player).getPlayerArmies();
-            playersList.get(player).getTerritoriesHeld().get(reinforcingCountry).increaseArmyCountByValue(noofArmies);
-            playersList.get(player).decreaseArmyCountByValue(noofArmies);
+            int noofArmies = playersList.get(currentPlayer).getPlayerArmies();
+            playersList.get(currentPlayer).getTerritoriesHeld().get(reinforcingCountry).increaseArmyCountByValue(noofArmies);
+            playersList.get(currentPlayer).decreaseArmyCountByValue(noofArmies);
         }
         return reinforcingCountry;
     }

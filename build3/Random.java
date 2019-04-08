@@ -42,16 +42,20 @@ public class Random implements Strategy {
 
         if(isPlayerAttackerOrDefender.equalsIgnoreCase(Constants.ATTACKER)) {
             String randomAttackingCountry = getRandomTerritoryToAttack(playersList.get(currentPlayer).getTerritoriesHeld());
+             if(!randomAttackingCountry.trim().isEmpty()) {
             Territories attackingTerritory = playersList.get(currentPlayer).getTerritoriesHeld().get(randomAttackingCountry);
             playersList.get(currentPlayer).setAttackingCountry(attackingTerritory);
             return randomAttackingCountry;
+             }
 
         } else if(isPlayerAttackerOrDefender.equalsIgnoreCase(Constants.DEFENDER)) {
+            if(playersList.get(currentPlayer).getAttackingCountry() != null) {
             String defendingCountry = getNeighbourCountryToAttack(playersList.get(currentPlayer).getAttackingCountry().getTerritorieName(),
                     playersList.get(currentPlayer).getTerritoriesHeld());
             playersList.get(currentPlayer).setDefendingCountry(defendingCountry);
             return defendingCountry;
+            }
         }
-        return null;
+        return "";
     }
 }

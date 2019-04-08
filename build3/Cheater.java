@@ -87,7 +87,7 @@ public class Cheater implements Strategy {
             }
                if(hasNeightbour) {
                 territory.increaseArmyCountByValue(territory.getArmiesHeld());
-                System.out.println(territory.getTerritorieName() + " country armies has been doubled");
+                System.out.println("The " +territory.getTerritorieName() + " country armies has been doubled");
             }
         }
         return " ";

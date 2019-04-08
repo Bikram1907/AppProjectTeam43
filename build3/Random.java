@@ -58,4 +58,21 @@ public class Random implements Strategy {
         }
         return "";
     }
+    
+     /**
+     * returns the fortifying country and source country.
+     * @param playersList
+     * @param currentPlayer
+     * @param isToFindFortifyingCountryOrSourceCountry
+     * @return country name
+     */
+    @Override
+    public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
+
+        if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.SOURCECOUNTRY)) {
+            Territories sourceCountry = getRandomTerritoryToFortifyFrom(playersList.get(currentPlayer).getTerritoriesHeld());
+            if(sourceCountry != null) {
+                playersList.get(currentPlayer).setSourceCountry(sourceCountry);
+                return sourceCountry.getTerritorieName();
+            }
 }

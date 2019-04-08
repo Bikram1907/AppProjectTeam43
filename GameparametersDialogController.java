@@ -13,6 +13,12 @@ import sample.model.GameDetails;
 import java.io.File;
 import java.util.HashMap;
 
+/**
+ * This class contains the methods that are used to get the no of players based on the user selection
+ * and their characters and the choosen map.
+ * All these details are retrieved and stored.
+ * @author Team43
+ */
 public class GameparametersDialogController {
 
     @FXML
@@ -136,7 +142,7 @@ public class GameparametersDialogController {
     public void createGameinstance() {
 
         StorePlayercharacters();
-        GameDetails object = new GameDetails(Integer.parseInt(noofPlayers),selectedfile,playerCharacters,"NEWGAME");
+        GameDetails object = new GameDetails(Integer.parseInt(noofPlayers),selectedfile,playerCharacters,Constants.NEWGAME,Constants.STARTPHASE);
         GameDetails.getGamedetails().addgamedetailsInstance(object);
     }
 
@@ -178,5 +184,4 @@ public class GameparametersDialogController {
                 break;
         }
     }
-
 }

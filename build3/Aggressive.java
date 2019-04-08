@@ -39,9 +39,15 @@ public class Aggressive implements Strategy {
             return territory.getTerritorieName();
         }
         return null;
-    }
+   }
     
-    
+  /**
+  * This method returns the strongest country to start the attack from and attacking country.
+  * @param playersList
+  * @param currentPlayer
+  * @param isPlayerAttackerOrDefender
+  * @return country name
+  */
     @Override
     public String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender) {
 
@@ -49,5 +55,12 @@ public class Aggressive implements Strategy {
             Territories strongestCountry = getStrongestCountry(playersList.get(currentPlayer).getTerritoriesHeld());
             playersList.get(currentPlayer).setAttackingCountry(strongestCountry);
             return strongestCountry.getTerritorieName();
-        } 
+        } else {
+            // get the neighbouring country of the attacker country
+            Territories strongestCountry = playersList.get(currentPlayer).getAttackingCountry();
+            String attackedCountry = getAttackedCountry(strongestCountry,playersList.get(currentPlayer).getTerritoriesHeld());
+            playersList.get(currentPlayer).setDefendingCountry(attackedCountry);
+            return attackedCountry;
+        }
+    }
 }

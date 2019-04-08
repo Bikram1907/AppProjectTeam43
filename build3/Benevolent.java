@@ -92,4 +92,10 @@ public class Benevolent implements Strategy {
                 territories.add(territory);
             }
         }
+        if(territories.size() > 1) {
+            Random r = new Random();
+            weakTerritory = territories.get(r.nextInt(territories.size()));
+        }
+        return weakTerritory.getTerritorieName();
+    }
 }

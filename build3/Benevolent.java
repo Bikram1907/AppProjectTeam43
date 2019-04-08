@@ -70,5 +70,6 @@ public class Benevolent implements Strategy {
             String weakestTerritory = getWeakestTerritory(playersList.get(currentPlayer).getTerritoriesHeld());
             return weakestTerritory;
         }
+        return null;
     }
 }

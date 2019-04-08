@@ -89,6 +89,11 @@ public class Aggressive implements Strategy {
         return null;
     }
     
+    /**
+     * This method returns the strongest country to start the attack from.
+     * @param territoriesHeld
+     * @return country name
+     */
     public Territories getStrongestCountry(HashMap<String,Territories> territoriesHeld) {
 
         Territories strongestCountry = territoriesHeld.get(territoriesHeld.keySet().toArray()[0]);

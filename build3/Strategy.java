@@ -25,6 +25,13 @@ public interface Strategy {
 
      String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender);
     
+       /**
+     * This method implements the fortification using the player strategies.
+     * @param playersList
+     * @param currentPlayer
+     * @return country name
+     */
+
      String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry);
 
 

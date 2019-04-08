@@ -64,6 +64,18 @@ public class Cheater implements Strategy {
         }
         return str.trim();
     }
+       public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
+
+        for(String key : playersList.get(currentPlayer).getTerritoriesHeld().keySet()) {
+            Territories territory = playersList.get(currentPlayer).getTerritoriesHeld().get(key);
+            boolean hasNeightbour = false;
+            for(String adjacentTerritory : territory.getAdjacentTerritories()) {
+                if(!playersList.get(currentPlayer).getTerritoriesHeld().containsKey(adjacentTerritory)) {
+                    hasNeightbour = true;
+                    break;
+                }
+            }
+
 
 
         

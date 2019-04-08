@@ -90,7 +90,7 @@ public class Cheater implements Strategy {
                 System.out.println("The " +territory.getTerritorieName() + " country armies has been doubled");
             }
         }
-        return " ";
+        return "";
     }
 
 }

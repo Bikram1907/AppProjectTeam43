@@ -24,5 +24,8 @@ public interface Strategy {
      */
 
      String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender);
+    
+     String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry);
+
 
 

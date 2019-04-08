@@ -50,4 +50,25 @@ public class Benevolent implements Strategy {
         // Do nothing skip to next phase.
         return null;
     }
+    
+    /**
+     * This method fortifies the weakest country with the strongest country adjacent to the weakest country
+     * @param playersList
+     * @param currentPlayer
+     * @param isToFindFortifyingCountryOrSourceCountry
+     * @return country name
+     */
+    @Override
+    public String fortify(ObservableList<Player> playersList, int currentPlayer,String isToFindFortifyingCountryOrSourceCountry) {
+
+        // To get the source country
+        if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.SOURCECOUNTRY)) {
+            String strongestAdjacent = getWeakestTerritoryStrongestAdjacent(playersList.get(currentPlayer).getTerritoriesHeld());
+            return strongestAdjacent;
+        // To get the fortifying country.
+        } else if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.FORTIFYINGCOUNTRY)) {
+            String weakestTerritory = getWeakestTerritory(playersList.get(currentPlayer).getTerritoriesHeld());
+            return weakestTerritory;
+        }
+    }
 }

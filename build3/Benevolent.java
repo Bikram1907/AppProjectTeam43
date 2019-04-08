@@ -37,4 +37,17 @@ public class Benevolent implements Strategy {
         }
         return reinforcingCountry;
     }
+    
+    /**
+     * This method skips to the next phase.
+     * @param playersList
+     * @param currentPlayer
+     * @param isPlayerAttackerOrDefender
+     * @return null
+     */
+    @Override
+    public String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender) {
+        // Do nothing skip to next phase.
+        return null;
+    }
 }

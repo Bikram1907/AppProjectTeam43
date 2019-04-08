@@ -119,4 +119,24 @@ public class Aggressive implements Strategy {
 
         return strongestCountry;
     }
+    
+    /**
+     * This method returns the adjacent country to the strongest country to attack.
+     * @param strongestCountry
+     * @param territoriesHeld
+     * @return adjacent country
+     */
+    public String getAttackedCountry(Territories strongestCountry,HashMap<String,Territories> territoriesHeld) {
+
+        String attackedTerritory = null;
+
+        for(String adjacentTerritory : strongestCountry.getAdjacentTerritories()) {
+            if(!territoriesHeld.containsKey(adjacentTerritory)) {
+                attackedTerritory = adjacentTerritory;
+                break;
+            }
+        }
+
+        return attackedTerritory;
+    }
 }

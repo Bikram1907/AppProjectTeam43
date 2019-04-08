@@ -88,4 +88,24 @@ public class Aggressive implements Strategy {
         }
         return null;
     }
+    
+    public Territories getStrongestCountry(HashMap<String,Territories> territoriesHeld) {
+
+        Territories strongestCountry = territoriesHeld.get(territoriesHeld.keySet().toArray()[0]);
+
+        for(String key : territoriesHeld.keySet()) {
+            Territories territory = territoriesHeld.get(key);
+            if(territory.getArmiesHeld() > strongestCountry.getArmiesHeld()) {
+                strongestCountry = territory;
+            }
+        }
+
+        if(strongestCountry.getArmiesHeld() == 1) {
+            Random r = new Random();
+            List<String> keyset = new ArrayList<>(territoriesHeld.keySet());
+            strongestCountry = territoriesHeld.get(keyset.get(r.nextInt(keyset.size())));
+        }
+
+        return strongestCountry;
+    }
 }

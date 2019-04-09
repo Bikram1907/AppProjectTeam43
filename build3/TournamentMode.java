@@ -44,4 +44,20 @@ public class TournamentMode {
     public void setNoofPlayers(int noofPlayers) {
         this.noofPlayers = noofPlayers;
     }
+    
+    /**
+     * This method sets the results.
+     * @param results
+     */
+    public void setResults(ArrayList<ArrayList<String>> results) {
+        this.results = results;
+    }
+
+    /**
+     * This method gets the no of maps.
+     * @return
+     */
+    public int getNoofMaps() {
+        return noofMaps;
+    }
 }

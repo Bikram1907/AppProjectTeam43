@@ -94,6 +94,15 @@ public class TournamentController {
         player4ComboBox.setVisible(value3);
     }
   
+    /**
+     * To get the no of games.
+     */
+    public void getnoofGames() {
+
+        noofGames = (String) noOfGamesComboBox.getSelectionModel().getSelectedItem();
+    }
+
+  
   
   
 }

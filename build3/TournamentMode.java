@@ -9,6 +9,18 @@ import java.util.HashMap;
  */
 public class TournamentMode {
   
+  private int noofMaps;
+    private int noofGames;
+    private int noofPlayers;
+    private int noofTurns;
+    private int index;
+
+    private ArrayList<File> mapFiles = new ArrayList<>();
+
+    private HashMap<String,String> playerCharacters = new HashMap<>();
+
+    private ArrayList<ArrayList<String>> results = new ArrayList<>();
+  
   private static TournamentMode ourInstance = new TournamentMode();
 
   /**

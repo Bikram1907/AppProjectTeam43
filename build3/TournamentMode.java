@@ -88,4 +88,68 @@ public class TournamentMode {
         this.noofTurns = noofTurns;
     }
   
+    /**
+     * Returns the no of turns
+     * @return noofTurns
+     */
+    public int getNoofTurns() {
+        return noofTurns;
+    }
+
+    /**
+     * Returns the map files.
+     * @return mapfiles
+     */
+    public ArrayList<File> getMapFiles() {
+        return mapFiles;
+    }
+
+    /**
+     * Returns the player characters.
+     * @return playercharacters.
+     */
+    public HashMap<String, String> getPlayerCharacters() {
+        return playerCharacters;
+    }
+
+    /**
+     * To get the index.
+     * @return index
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * This method gets the no of maps.
+     * @return
+     */
+    public int getNoofMaps() {
+        return noofMaps;
+    }
+
+    /**
+     * This method gets the no of games.
+     * @return
+     */
+    public int getNoofGames() {
+        return noofGames;
+    }
+
+    /**
+     * This method gets the no of players.
+     * @return
+     */
+    public int getNoofPlayers() {
+        return noofPlayers;
+    }
+
+    /**
+     * This method gets the results.
+     * @return
+     */
+    public ArrayList<ArrayList<String>> getResults() {
+        return results;
+    }
+  
 }

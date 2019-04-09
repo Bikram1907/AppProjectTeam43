@@ -162,6 +162,61 @@ public class TournamentController {
         chooseMapButton4.setVisible(value3);
         chooseMapButton5.setVisible(value4);
     }
+  
+    /**
+     * This method is used to choose the map file using file chooser.
+     */
+    public void chooseMap1() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Map");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
+        mapFile1 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
+    }
+
+    /**
+     * This method is used to choose the map file using file chooser.
+     */
+    public void chooseMap2() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Map");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
+        mapFile2 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
+    }
+
+    /**
+     * This method is used to choose the map file using file chooser.
+     */
+    public void chooseMap3() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Map");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
+        mapFile3 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
+    }
+
+    /**
+     * This method is used to choose the map file using file chooser.
+     */
+    public void chooseMap4() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Map");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
+        mapFile4 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
+    }
+
+    /**
+     * This method is used to choose the map file using file chooser.
+     */
+    public void chooseMap5() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Map");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
+        mapFile5 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
+    }
 
 
 

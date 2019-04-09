@@ -282,6 +282,37 @@ public class Controller {
             TournamentController tcCountroller = tournamentDialogLoader.getController();
             tcCountroller.storeTheInputsAndCreateGameInstances();
             System.out.println("The no of player is " + TournamentMode.getInstance().getNoofPlayers());
+            GameDetails.getGamedetails().setGameMode(Constants.TOURNAMENTMODE);
+            for(int i = 0; i<TournamentMode.getInstance().getNoofMaps(); i++) {
+                TournamentMode.getInstance().setIndex(i);
+                for (int j = 0; j < TournamentMode.getInstance().getNoofGames(); j++) {
+                    createAGameObject(i);
+                    int index = returnIndex(Constants.TOURNAMENTGAME);
+                    GameDetails gdInstance = GameDetails.getGamedetails().getgamedetails().get(index);
+                    // Intialize the player objects and player colors and map.
+                    GameDetails.getGamedetails().IntializeColors(index);
+                    GameDetails.getGamedetails().IntializePlayers(index);
+                    GameDetails.getGamedetails().InitializeArmies(index);
+                    GameDetails.getGamedetails().createMap(index);
+                    if(GameDetails.getGamedetails().validateMap(index)) {
+                        System.out.println("Map is valid.");
+                        System.out.println("*********************************************************************************");
+                        System.out.println("Proceeding to the next step");
+                        // To distribute the territories to the players.
+                        GameDetails.getGamedetails().distributeTerritories(index);
+                        // To distribute the no of armies to the players.
+                        GameDetails.getGamedetails().distributeArmies(index);
+                        // To distribute the armies to the territories.
+                        GameDetails.getGamedetails().distributeArmiestoTerritories(index);
+                        String string = gdInstance.getMapFile().getName();
+                        string = string.substring(0,string.length()-4);
+                        System.out.println("Map name with out extension is "+ string);
+                        GameDetails.getGamedetails().getgamedetails().get(index).setMapName(string);
+                        loadGamewindow();
+                    }
+                }
+            }
+            TournamentMode.getInstance().printResults();
         } else {
             System.out.println("Cancel button is pressed");
         }

@@ -151,5 +151,26 @@ public class TournamentMode {
     public ArrayList<ArrayList<String>> getResults() {
         return results;
     }
+    
+    /**
+     * This method prints the tournament results to the console.
+     */
+    public void printResults() {
+
+        System.out.print("        ");
+        for(int k = 0; k<noofGames; k++) {
+            int var = k+1;
+            System.out.print("Game " +var + "   ");
+        }
+        System.out.println();
+
+        for(int i = 0; i<noofMaps; i++) {
+            int temp = i+1;
+            System.out.print("Map" +temp + " -> ");
+            for(int j = 0; j<noofGames; j++) {
+                System.out.print(results.get(i).get(j) + "   ");
+            }
+            System.out.println();
+    }
   
 }

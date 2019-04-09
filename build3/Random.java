@@ -143,4 +143,21 @@ public class Random implements Strategy {
         }
         return "";
     }
+    
+     /**
+     * This function returns the fortify from country.
+     * @param territoriesHeld
+     * @return country name
+     */
+    public Territories getRandomTerritoryToFortifyFrom(HashMap<String,Territories> territoriesHeld) {
+
+        java.util.Random random = new java.util.Random();
+        Territories fortifyFrom = null;
+        Vector<Territories> territories = new Vector<>();
+        for(String key : territoriesHeld.keySet()) {
+            Territories territory = territoriesHeld.get(key);
+            if(territory.getArmiesHeld() > 1) {
+                territories.add(territory);
+            }
+        }
 }

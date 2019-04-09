@@ -217,6 +217,30 @@ public class TournamentController {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Map files(*.map)","*.map"));
         mapFile5 = fileChooser.showOpenDialog(tAnchorPane.getScene().getWindow());
     }
+  
+    /**
+     * Used to store the player characters to the hashmap based on the number of players.
+     */
+    public void storePlayerCharacters() {
+
+        switch (noofPlayers) {
+            case "2":
+                playerCharacters.put("Player1",(String) player1ComboBox.getValue());
+                playerCharacters.put("Player2",(String) player2ComboBox.getValue());
+                break;
+            case "3":
+                playerCharacters.put("Player1",(String) player1ComboBox.getValue());
+                playerCharacters.put("Player2",(String) player2ComboBox.getValue());
+                playerCharacters.put("Player3",(String) player3ComboBox.getValue());
+                break;
+            case "4":
+                playerCharacters.put("Player1",(String) player1ComboBox.getValue());
+                playerCharacters.put("Player2",(String) player2ComboBox.getValue());
+                playerCharacters.put("Player3",(String) player3ComboBox.getValue());
+                playerCharacters.put("Player4",(String) player4ComboBox.getValue());
+                break;
+        }
+    }
 
 
 

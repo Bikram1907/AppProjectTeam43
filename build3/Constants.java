@@ -18,6 +18,12 @@ public class Constants {
     public static final String NEWGAME = "NEWGAME";
     public static final String EDITMAP = "EDITMAP";
     public static final String NEWMAP = "NEWMAP";
+    public static final String SETEXTTOFROMWHICHCOUNTRYFORTIFY = "From which country fortify";
+    public static final String SETEXTTOWHICHCOUNTRYFORTIFY = "To which country fortify";
+    public static final String SETEXTFROMWHICHCOUNTRYATTACK = "Attacker Country";
+    public static final String SETTEXTTOWHICHCOUNTRYATTACK = "Attacked Country";
+    public static final String SOURCECOUNTRY = "SOURCECOUNTRY";
+
 
 
 }

@@ -41,4 +41,14 @@ public class TournamentController {
   @FXML
   private AnchorPane tAnchorPane;
   
+  /**
+     * To get the no of players from the view.
+     */
+    public void getNoOfPlayers() {
+
+        displayPlayerComboBox(false,false,false,false);
+        noofPlayers = (String) noofPlayersComboBox.getSelectionModel().getSelectedItem();
+        setPlayers(noofPlayers);
+    }
+  
 }

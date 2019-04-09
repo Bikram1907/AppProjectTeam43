@@ -218,6 +218,35 @@ public class Controller {
     }
     
     /**
+     * This method loads the saved Game
+     */
+    public void loadsavedgame() {
+
+        File savedGame;
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Saved Game");
+        //fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("SER files(*.SER)","*.map"));
+        savedGame = fileChooser.showOpenDialog(MainBorderPane.getScene().getWindow());
+
+        if(savedGame != null) {
+            try{
+                FileInputStream fi = new FileInputStream(savedGame);
+                ObjectInputStream oi = new ObjectInputStream(fi);
+                GameDetails gd = (GameDetails) oi.readObject();
+                if(gd.getGameMode().equalsIgnoreCase(Constants.SINGLEMODE)) {
+                    GameDetails.getGamedetails().setGameMode(Constants.SINGLEMODE);
+                }
+                GameDetails.getGamedetails().getgamedetails().add(gd);
+                verifyTheSavedGameAndLoadTheGame();
+            } catch (Exception e) {
+                System.out.println("Cannot load the saved game.");
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
+    
+    /**
      * This method loads the tournament mode.
      */
     public void tournamentMode() {

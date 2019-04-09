@@ -261,6 +261,47 @@ public class TournamentController {
         }
         storeMapFiles();
     }
+  
+    /**
+     * This method creates the game objects for all the map files.
+     */
+    public void storeMapFiles() {
+
+        ArrayList<File> mapFiles = new ArrayList<>();
+        switch(noofMaps) {
+
+            case "1":
+                mapFiles.add(mapFile1);
+                break;
+
+            case "2":
+                mapFiles.add(mapFile1);
+                mapFiles.add(mapFile2);
+                break;
+
+            case "3":
+                mapFiles.add(mapFile1);
+                mapFiles.add(mapFile2);
+                mapFiles.add(mapFile3);
+                break;
+
+            case "4":
+                mapFiles.add(mapFile1);
+                mapFiles.add(mapFile2);
+                mapFiles.add(mapFile3);
+                mapFiles.add(mapFile4);
+                break;
+
+            case "5":
+                mapFiles.add(mapFile1);
+                mapFiles.add(mapFile2);
+                mapFiles.add(mapFile3);
+                mapFiles.add(mapFile4);
+                mapFiles.add(mapFile5);
+                break;
+        }
+        TournamentMode.getInstance().setMapFiles(mapFiles);
+    }
 
 
 

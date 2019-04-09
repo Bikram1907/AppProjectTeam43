@@ -72,6 +72,28 @@ public class TournamentController {
         }
     }
   
+   /**
+     * displays the player comboboxes
+     * @param value
+     * @param value1
+     * @param value2
+     * @param value3
+     */
+    public void displayPlayerComboBox(boolean value,boolean value1,boolean value2,boolean value3) {
+
+        player1Label.setVisible(value);
+        player1ComboBox.setVisible(value);
+
+        player2Label.setVisible(value1);
+        player2ComboBox.setVisible(value1);
+
+        player3Label.setVisible(value2);
+        player3ComboBox.setVisible(value2);
+
+        player4Label.setVisible(value3);
+        player4ComboBox.setVisible(value3);
+    }
+  
   
   
 }

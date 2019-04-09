@@ -160,4 +160,9 @@ public class Random implements Strategy {
                 territories.add(territory);
             }
         }
+         if(territories.size() > 1) {
+            fortifyFrom = territories.get(random.nextInt(territories.size()));
+        }
+        return fortifyFrom;
+    }
 }

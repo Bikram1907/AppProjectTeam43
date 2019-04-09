@@ -487,6 +487,18 @@ public class GameDetails {
 
         System.out.println("Added The colors to the list.");
     }
+    
+    /**
+     * Function sets the player colors.
+     * @param index
+     */
+    public void setPlayercolors(int index) {
+
+        int size = gamedetails.get(index).getPlayersList().size();
+        for(int i = 0; i<size; i++) {
+            gamedetails.get(index).getPlayersList().get(i).setPlayerColor(playerColors.get(i));
+        }
+    }
 
     /**
      * This will assign the armies based on the no of players.

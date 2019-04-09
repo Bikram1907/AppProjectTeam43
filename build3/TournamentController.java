@@ -119,5 +119,32 @@ public class TournamentController {
         noofMaps = (String) noOfMapsComboBox.getSelectionModel().getSelectedItem();
         displayMapbuttons(noofMaps);
     }
+  
+    public void displayMapbuttons(String noofMaps) {
+
+        switch (noofMaps) {
+
+            case "1":
+                disableMapButtons(true,false,false,false,false);
+                break;
+
+            case "2":
+                disableMapButtons(true,true,false,false,false);
+                break;
+
+            case "3":
+                disableMapButtons(true,true,true,false,false);
+                break;
+
+            case "4":
+                disableMapButtons(true,true,true,true,false);
+                break;
+
+            case "5":
+                disableMapButtons(true,true,true,true,true);
+                break;
+        }
+    }
+
 
 }

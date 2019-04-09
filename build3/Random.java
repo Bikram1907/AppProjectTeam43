@@ -125,4 +125,15 @@ public class Random implements Strategy {
 
         return "";
     }
+    
+    public String getNeighbourCountryToAttack(String countryName,HashMap<String,Territories> territoriesHeld) {
+
+        java.util.Random random = new java.util.Random();
+        Territories attackingCountry = territoriesHeld.get(countryName);
+        Vector<String> attackingTerritories = new Vector<>();
+        for(String adjacentCountries : attackingCountry.getAdjacentTerritories()) {
+            if(!territoriesHeld.containsKey(adjacentCountries)) {
+                attackingTerritories.add(adjacentCountries);
+            }
+        }
 }

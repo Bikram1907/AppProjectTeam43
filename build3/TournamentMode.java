@@ -18,4 +18,10 @@ public class TournamentMode {
       return ourInstance;
   }
   
+  /**
+  * An empty Constructor
+  */
+  private TournamentMode() {
+    }
+  
 }

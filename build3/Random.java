@@ -136,4 +136,11 @@ public class Random implements Strategy {
                 attackingTerritories.add(adjacentCountries);
             }
         }
+        
+        if(attackingTerritories.size() > 1) {
+            String attackingTerritory = attackingTerritories.get(random.nextInt(attackingTerritories.size()));
+            return attackingTerritory;
+        }
+       
+    }
 }

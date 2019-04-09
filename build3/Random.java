@@ -118,4 +118,11 @@ public class Random implements Strategy {
                 }
             }
         }
+        if(territories.size() > 1) {
+            Territories randomTerritoryToAttack = territories.get(random.nextInt(territories.size()));
+            return randomTerritoryToAttack.getTerritorieName();
+        }
+
+        return "";
+    }
 }

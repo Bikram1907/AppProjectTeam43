@@ -75,4 +75,13 @@ public class Random implements Strategy {
                 playersList.get(currentPlayer).setSourceCountry(sourceCountry);
                 return sourceCountry.getTerritorieName();
             }
+            } else {
+            Territories fortifyingCountry = getRandomFortifyingCountry(playersList.get(currentPlayer).getSourceCountry(),
+                    playersList.get(currentPlayer).getTerritoriesHeld());
+            if(fortifyingCountry != null) {
+                playersList.get(currentPlayer).setFortifyingCountry(fortifyingCountry);
+                return fortifyingCountry.getTerritorieName();
+            }
+        }
+        return "";
 }

@@ -36,4 +36,12 @@ public class TournamentMode {
     public void setNoofGames(int noofGames) {
         this.noofGames = noofGames;
     }
+    
+    /**
+     * This method sets the no of players.
+     * @param noofPlayers
+     */
+    public void setNoofPlayers(int noofPlayers) {
+        this.noofPlayers = noofPlayers;
+    }
 }

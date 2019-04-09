@@ -1,20 +1,24 @@
-package sample;
+package sample.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 /**
  * This class is used to store the initial game parameters.
+ * This class creates the player objects and player colors and
+ * distributes the armies to the players and distributes the
+ * player armies to the player territories.
+ * This class whether map is valid or not and stores the territories
+ * and continents.
+ * @author Team43.
  */
-public class GameDetails {
+public class GameDetails extends Observable implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private static GameDetails gamedetailsInstance = new GameDetails();
     private int numberOfPlayers;
     private File mapFile;
@@ -22,8 +26,8 @@ public class GameDetails {
     private ArrayList<GameDetails> gamedetails  = new ArrayList<GameDetails>();
     private ArrayList<Continent> continentList = new ArrayList<Continent>();
     private HashMap<String, Territories> territoriesList = new HashMap<String, Territories>();
-    private ObservableList<Player> playersList;
-    private ArrayList<Color> playerColors = new ArrayList<Color>();
+    private ArrayList<Player> playersList;
+    private transient ArrayList<Color> playerColors = new ArrayList<Color>();
     private String mapName;
     private String typeName;
     private ArrayList<String> checkContinent = new ArrayList<String>();
@@ -35,7 +39,7 @@ public class GameDetails {
     private String gameMode;
     private int noofTurns;
     private String previousGamePhase;
-
+    private int currentTurn;
 
     /**
      * Empty Constructor.
@@ -48,14 +52,17 @@ public class GameDetails {
      * Constructor with parameters.
      * @param numberOfPlayers
      * @param mapFile
-     * @param playerCharacters
      */
-    public GameDetails(int numberOfPlayers, File mapFile, HashMap<String, String> playerCharacters, String typeName) {
+    public GameDetails(int numberOfPlayers, File mapFile,HashMap<String, String> playerCharacters,
+                       String typeName,String currentGamePhase,String gameMode,int noofTurns) {
 
         this.numberOfPlayers = numberOfPlayers;
         this.mapFile = mapFile;
         this.playerCharacters = playerCharacters;
         this.typeName = typeName;
+        this.currentGamePhase = currentGamePhase;
+        this.gameMode = gameMode;
+        this.noofTurns = noofTurns;
     }
 
     /**
@@ -113,7 +120,7 @@ public class GameDetails {
      * To set the players list.
      * @param playersList
      */
-    public void setPlayersList(ObservableList<Player> playersList) {
+    public void setPlayersList(ArrayList<Player> playersList) {
         this.playersList = playersList;
     }
 
@@ -140,7 +147,7 @@ public class GameDetails {
     public void setNoofArmies(HashMap<Integer, Integer> noofArmies) {
         this.noofArmies = noofArmies;
     }
-    
+
     /**
      * Method to set the game phase.
      * @param currentGamePhase
@@ -150,7 +157,7 @@ public class GameDetails {
         setChanged();
         notifyObservers(currentGamePhase);
     }
-    
+
     /**
      * To set the current player.
      * @param currentPlayer
@@ -160,7 +167,23 @@ public class GameDetails {
         setChanged();
         notifyObservers(currentPlayer);
     }
-    
+
+    /**
+     * To set the map size.
+     * @param mapSize
+     */
+    public void setMapSize(int mapSize) {
+        this.mapSize = mapSize;
+    }
+
+    /**
+     * To set the cards list.
+     * @param cardsList
+     */
+    public void setCardsList(List<Card> cardsList) {
+        this.cardsList = cardsList;
+    }
+
     /**
      * To set the game mode.
      * @param gameMode
@@ -176,31 +199,86 @@ public class GameDetails {
     public void setNoofTurns(int noofTurns) {
         this.noofTurns = noofTurns;
     }
-    
+
     /**
-     * To get the current player
-     * @return currentPlayer
+     * To set the previous game phase.
+     * @param previousGamePhase
      */
-    public int getCurrentPlayer() {
-        return currentPlayer;
+    public void setPreviousGamePhase(String previousGamePhase) {
+        this.previousGamePhase = previousGamePhase;
     }
-    
+
     /**
-     * To return the gamephase.
-     * @return currentGamePhase
+     * To set the current turn
+     * @param currentTurn
      */
-    public String getGamePhase() {
-        return currentGamePhase;
+    public void setCurrentTurn(int currentTurn) {
+        this.currentTurn = currentTurn;
     }
-    
+
     /**
-     * To set the map size.
-     * @param mapSize
+     * To get the current turn
+     * @return current turn
      */
-    public void setMapSize(int mapSize) {
-        this.mapSize = mapSize;
+    public int getCurrentTurn() {
+        return currentTurn;
     }
-    
+
+    /**
+     * To increament the current turn.
+     */
+    public void increamentTurn() {
+        this.currentTurn += currentTurn;
+    }
+
+    /**
+     * To get the previous gamephase.
+     * @return previousGamePhase
+     */
+    public String getPreviousGamePhase() {
+        return previousGamePhase;
+    }
+
+    /**
+     * To get the game mode.
+     * @return game mode
+     */
+    public String getGameMode() {
+        return gameMode;
+    }
+
+    /**
+     * To get the no of Turns.
+     * @return noofTurns
+     */
+    public int getNoofTurns() {
+        return noofTurns;
+    }
+
+    /**
+     * Increaments the no of turns.
+     */
+    public void increamentTheNumberOfTurns() {
+
+        this.noofTurns += 1;
+    }
+
+    /**
+     * Method to return the player characters.
+     * @return playerCharacters
+     */
+    public HashMap<String, String> getPlayerCharacters() {
+        return playerCharacters;
+    }
+
+    /**
+     * To add the cards list.
+     * @return cardList
+     */
+    public List<Card> getCardsList() {
+        return cardsList;
+    }
+
     /**
      * To get the map size
      * @return mapSize
@@ -210,8 +288,24 @@ public class GameDetails {
     }
 
     /**
+     * To get the current player
+     * @return currentPlayer
+     */
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    /**
+     * To return the gamephase.
+     * @return currentGamePhase
+     */
+    public String getGamePhase() {
+        return currentGamePhase;
+    }
+
+    /**
      * Method to get the class object.
-     * @return
+     * @return gamedetailsInstance
      */
     public static GameDetails getGamedetails() {
         return gamedetailsInstance;
@@ -219,7 +313,7 @@ public class GameDetails {
 
     /**
      * Method to return the number of players.
-     * @return
+     * @return numberOfPlayers
      */
     public int getNumberOfPlayers() {
         return numberOfPlayers;
@@ -227,23 +321,15 @@ public class GameDetails {
 
     /**
      * Method to return the map file.
-     * @return
+     * @return mapFile
      */
     public File getMapFile() {
         return mapFile;
     }
 
     /**
-     * Method to return the player characters.
-     * @return
-     */
-    public HashMap<String, String> getPlayerCharacters() {
-        return playerCharacters;
-    }
-
-    /**
      * return the game details arraylist.
-     * @return
+     * @return gamedetails
      */
     public ArrayList<GameDetails> getgamedetails() {
         return gamedetails;
@@ -259,7 +345,7 @@ public class GameDetails {
 
     /**
      * To return the continentList from the map file.
-     * @return
+     * @return continentList
      */
     public ArrayList<Continent> getContinentList() {
         return continentList;
@@ -267,7 +353,7 @@ public class GameDetails {
 
     /**
      * To return the territorie List.
-     * @return
+     * @return territoriesList
      */
     public HashMap<String, Territories> getTerritoriesList() {
         return territoriesList;
@@ -275,15 +361,15 @@ public class GameDetails {
 
     /**
      * Returns the Players List.
-     * @return
+     * @return playerList
      */
-    public ObservableList<Player> getPlayersList() {
+    public ArrayList<Player> getPlayersList() {
         return playersList;
     }
 
     /**
      * Returns the Players colors.
-     * @return
+     * @return playerColors
      */
     public ArrayList<Color> getPlayerColors() {
         return playerColors;
@@ -291,7 +377,7 @@ public class GameDetails {
 
     /**
      * To return Map name.
-     * @return
+     * @return mapName
      */
     public String getMapName() {
         return mapName;
@@ -299,7 +385,7 @@ public class GameDetails {
 
     /**
      * Return the game object or map editor object.
-     * @return
+     * @return typeName
      */
     public String getTypeName() {
         return typeName;
@@ -307,7 +393,7 @@ public class GameDetails {
 
     /**
      * To return the no of Armies hashmap.
-     * @return
+     * @return noofArmies
      */
     public HashMap<Integer, Integer> getNoofArmies() {
         return noofArmies;
@@ -324,7 +410,7 @@ public class GameDetails {
         System.out.println(mapFile.toString());
         System.out.println("***************************************Till here********************************************");
 
-        ArrayList<Territories> adjacentterritoriesList = new ArrayList<Territories>();
+        ArrayList<String> adjacentterritoriesList = new ArrayList<String>();
 
         try{
             BufferedReader br = new BufferedReader(new FileReader(mapFile));
@@ -338,7 +424,7 @@ public class GameDetails {
                             while((line = br.readLine()) != null) {
                                 if(line.trim().isEmpty()){
                                     if(continentList.size() > i) {
-                                       continentList.get(i).copyArrayListElementsToAnother(adjacentterritoriesList);
+                                        continentList.get(i).copyArrayListElementsToAnother(adjacentterritoriesList);
                                         System.out.println(adjacentterritoriesList.size());
                                         adjacentterritoriesList.clear();
                                     }
@@ -351,7 +437,7 @@ public class GameDetails {
                                     adjlist.remove(0);
                                     adjlist.remove(0);
                                     adjlist.remove(0);
-                                    
+
                                     territoriesList.put(splitTerritorie[0].trim(),new Territories(splitTerritorie[0].trim(),Integer.parseInt(splitTerritorie[1]),
                                             Integer.parseInt(splitTerritorie[2]),splitTerritorie[3],adjlist));
                                     adjacentterritoriesList.add(splitTerritorie[0].trim());
@@ -374,12 +460,12 @@ public class GameDetails {
             System.out.println("TerritoriesList size is = " + territoriesList.size());
             GameDetails.getGamedetails().getgamedetails().get(index).setContinentList(continentList);
             GameDetails.getGamedetails().getgamedetails().get(index).setTerritoriesList(territoriesList);
-            
+            GameDetails.getGamedetails().getgamedetails().get(index).setMapSize(territoriesList.size());
+
             cardsList.add(new Card("None","WILD"));
             cardsList.add(new Card("NONE1","WILD"));
 
             GameDetails.getGamedetails().getgamedetails().get(index).setCardsList(cardsList);
-
 
             System.out.println("Loaded the Map files into the List.");
 
@@ -448,21 +534,23 @@ public class GameDetails {
 
         // Get the no of players count.
         int size = gamedetails.get(index).getNumberOfPlayers();
-        playersList = FXCollections.observableArrayList();
+        playersList = new ArrayList<>();
         int j = 0;
 
         // Create player class object for each player and store it to the playerslist of type arraylist.
         for(int i = 0; i<size; i++) {
             j = i + 1;
-            HashMap<String,Territories> territoriesHeld = new HashMap<String,Territories>();
-            playersList.add(new Player("Player"+j,0,false,"None",playerColors.get(i),0));
-             playersList.get(i).setTerritoriesHeld(new HashMap<String,Territories>());
+
+            playersList.add(new Player("Player"+j,0,false,
+                    gamedetails.get(0).getPlayerCharacters().get("Player"+j),playerColors.get(i),0
+                    ,findIfPlayerIsAI(gamedetails.get(index).getPlayerCharacters().get("Player"+j))));
+
+            playersList.get(i).setTerritoriesHeld(new HashMap<String,Territories>());
             playersList.get(i).setContinentHeld(new HashMap<String,Continent>());
             playersList.get(i).setCardTurn(1);
             playersList.get(i).setCardsHeld(new ArrayList<Card>());
         }
 
-        
         // Add the playerslist of type arraylist to the gamedetails class object.
         gamedetails.get(index).setPlayersList(playersList);
 
@@ -487,7 +575,7 @@ public class GameDetails {
 
         System.out.println("Added The colors to the list.");
     }
-    
+
     /**
      * Function sets the player colors.
      * @param index
@@ -535,7 +623,7 @@ public class GameDetails {
             }
             Territories territory = territoriesList.get(key);
             territory.setHasPlayer(true);
-            territory.setPlayer(playersList.get(player));
+            territory.setPlayer(playersList.get(player).getPlayerName());
 
             playersList.get(player).getTerritoriesHeld().put(key,territory);
 
@@ -564,8 +652,6 @@ public class GameDetails {
      * This function distributes the player armies to their corresponding territories.
      * First retrieves the no of players.
      * For each player it retrives the territories and for each territory it assigns one army.
-     * After the loop if the player left any armies then it retrives the random territory and increaments
-     * the count by 1. We do this untill player has no armies left.
      * @param index
      */
     public void distributeArmiestoTerritories(int index) {
@@ -581,13 +667,9 @@ public class GameDetails {
                     Territories territory = gamedetails.get(index).getPlayersList().get(i).getTerritoriesHeld().get(key);
                     territory.setArmiesHeld(1);
                     playerArmies -= 1;
-                } else {
-                    // set the player army to zero.
-                    gamedetails.get(index).getPlayersList().get(i).setPlayerArmies(0);
                 }
             }
-
-            }
+            gamedetails.get(index).getPlayersList().get(i).setPlayerArmies(playerArmies);
         }
     }
 
@@ -609,6 +691,21 @@ public class GameDetails {
             return "ARTILLERY";
         }
     }
+
+    /**
+     * Returns true if the player the AI, otherwise false.
+     * @param playerCharacter
+     * @return boolean
+     */
+    public boolean findIfPlayerIsAI(String playerCharacter) {
+
+        if(!playerCharacter.equalsIgnoreCase("HUMAN")) {
+            return true;
+        }
+        return false;
+    }
+
+
 
     /**
      * This will clears the data and objects and contents from hashmap and lists.

@@ -60,4 +60,12 @@ public class TournamentMode {
     public int getNoofMaps() {
         return noofMaps;
     }
+    
+    /**
+     * This method gets the no of games.
+     * @return
+     */
+    public int getNoofGames() {
+        return noofGames;
+    }
 }

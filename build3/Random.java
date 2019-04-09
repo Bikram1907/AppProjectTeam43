@@ -96,5 +96,6 @@ public class Random implements Strategy {
         java.util.Random r = new java.util.Random();
         List<String> keyset = new ArrayList<>(territoriesHeld.keySet());
         Territories randomCountry = territoriesHeld.get(keyset.get(r.nextInt(keyset.size())));
+        return randomCountry;
     }
 }

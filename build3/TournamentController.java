@@ -109,5 +109,15 @@ public class TournamentController {
 
         noofTurns = (String) noOfTurnsComboBox.getSelectionModel().getSelectedItem();
     }
+  
+    /**
+     * To get the no of maps.
+     */
+    public void getnoofMaps() {
+
+        disableMapButtons(false,false,false,false,false);
+        noofMaps = (String) noOfMapsComboBox.getSelectionModel().getSelectedItem();
+        displayMapbuttons(noofMaps);
+    }
 
 }

@@ -17,4 +17,15 @@ public class TournamentMode {
     public static TournamentMode getInstance() {
         return ourInstance;
     }
+    
+    private TournamentMode() {
+    }
+
+    /**
+     * This method sets the no of maps.
+     * @param noofMaps
+     */
+    public void setNoofMaps(int noofMaps) {
+        this.noofMaps = noofMaps;
+    }
 }

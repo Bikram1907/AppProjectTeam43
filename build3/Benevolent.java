@@ -14,6 +14,8 @@ import java.util.Vector;
  */
 public class Benevolent implements Strategy {
 
+    Territories weakestCountry;
+    
     /**
      * An empty constructor.
      */
@@ -48,7 +50,7 @@ public class Benevolent implements Strategy {
     @Override
     public String attack(ObservableList<Player> playersList, int currentPlayer,String isPlayerAttackerOrDefender) {
         // Do nothing skip to next phase.
-        return null;
+        return "";
     }
     
     /**
@@ -63,14 +65,22 @@ public class Benevolent implements Strategy {
 
         // To get the source country
         if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.SOURCECOUNTRY)) {
-            String strongestAdjacent = getWeakestTerritoryStrongestAdjacent(playersList.get(currentPlayer).getTerritoriesHeld());
-            return strongestAdjacent;
+            Territories strongestAdjacent = getWeakestTerritoryStrongestAdjacent(playersList.get(currentPlayer).getTerritoriesHeld());
+           if(strongestAdjacent != null) {
+                playersList.get(currentPlayer).setSourceCountry(playersList.get(currentPlayer).getTerritoriesHeld()
+                        .get(strongestAdjacent.getTerritorieName()));
+                playersList.get(currentPlayer).setFortifyingCountry(weakestCountry);
+                return strongestAdjacent.getTerritorieName();
+            }
+            
         // To get the fortifying country.
         } else if(isToFindFortifyingCountryOrSourceCountry.equalsIgnoreCase(Constants.FORTIFYINGCOUNTRY)) {
+            if(playersList.get(currentPlayer).getFortifyingCountry() != null) {
             String weakestTerritory = getWeakestTerritory(playersList.get(currentPlayer).getTerritoriesHeld());
             return weakestTerritory;
+            }
         }
-        return null;
+        return "";
     }
     
     /**

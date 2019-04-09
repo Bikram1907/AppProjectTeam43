@@ -133,4 +133,21 @@ public class Benevolent implements Strategy {
                 }
             }
         }
+        
+        if(strongestTerritory == null) {
+
+            for(String key : territoriesHeld.keySet()) {
+                Territories territory = territoriesHeld.get(key);
+                if(!weakestCountry.getTerritorieName().equalsIgnoreCase(territory.getTerritorieName()) &&
+                        territory.getArmiesHeld() > 1 && weakestCountry.getAdjacentTerritories().contains(territory.getTerritorieName()
+                )) {
+                    if(strongestTerritory == null) {
+                        strongestTerritory = territory;
+                        break;
+                    }
+                }
+            }
+        }
+        return strongestTerritory;
+    }
 }

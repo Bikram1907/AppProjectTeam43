@@ -165,6 +165,25 @@ public class Controller {
     }
     
     /**
+     *  This method will clear the game objects.
+     */
+    public void clearObjects(String typeName) {
+
+        int index = -1;
+        for(int i = 0; i<GameDetails.getGamedetails().getgamedetails().size(); i++) {
+            GameDetails gd = GameDetails.getGamedetails().getgamedetails().get(i);
+            if(gd.getTypeName().equalsIgnoreCase(typeName)) {
+                index = i;
+            }
+        }
+        GameDetails.getGamedetails().getgamedetails().remove(index);
+        GameDetails.getGamedetails().getTerritoriesList().clear();
+        GameDetails.getGamedetails().getContinentList().clear();
+        GameDetails.getGamedetails().getPlayerColors().clear();
+        GameDetails.getGamedetails().getNoofArmies().clear();
+    }
+    
+    /**
      * This method is used to the edit the map.
      */
     public void editMap() {

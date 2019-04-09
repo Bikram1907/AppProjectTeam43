@@ -108,4 +108,29 @@ public class Benevolent implements Strategy {
         }
         return weakTerritory.getTerritorieName();
     }
+    
+    /**
+     * This function finds the strongest adjacent territory to the weakest territory to fortify the
+     * weakest territory.
+     * @param territoriesHeld
+     * @return country name
+     */
+    public Territories getWeakestTerritoryStrongestAdjacent(HashMap<String, Territories> territoriesHeld) {
+
+        String weakestTerritory = getWeakestTerritory(territoriesHeld);
+        weakestCountry = territoriesHeld.get(weakestTerritory);
+        Territories strongestTerritory = null;
+
+        for(String adjacentTerritory : territoriesHeld.keySet()) {
+            Territories territory = territoriesHeld.get(adjacentTerritory);
+            if(!weakestCountry.getTerritorieName().equalsIgnoreCase(territory.getTerritorieName()) &&
+                    territory.getArmiesHeld() > 1 && weakestCountry.getAdjacentTerritories()
+                    .contains(territory.getTerritorieName())) {
+                if(strongestTerritory == null) {
+                    strongestTerritory = territory;
+                } else if(territory.getArmiesHeld() > strongestTerritory.getArmiesHeld()) {
+                    strongestTerritory = territory;
+                }
+            }
+        }
 }

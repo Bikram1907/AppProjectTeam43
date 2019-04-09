@@ -141,6 +141,6 @@ public class Random implements Strategy {
             String attackingTerritory = attackingTerritories.get(random.nextInt(attackingTerritories.size()));
             return attackingTerritory;
         }
-       
+        return "";
     }
 }

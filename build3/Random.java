@@ -98,4 +98,22 @@ public class Random implements Strategy {
         Territories randomCountry = territoriesHeld.get(keyset.get(r.nextInt(keyset.size())));
         return randomCountry;
     }
+    
+     /**
+     * Returns the country to start the attack from
+     */
+    public String getRandomTerritoryToAttack(HashMap<String,Territories> territoriesHeld) {
+
+        java.util.Random random = new java.util.Random();
+        Vector<Territories> territories = new Vector<>();
+        for(String key : territoriesHeld.keySet()) {
+            Territories territory = territoriesHeld.get(key);
+            if(territory.getArmiesHeld() > 1) {
+                for(String adjacentKey : territory.getAdjacentTerritories()) {
+                    if(!territoriesHeld.containsKey(adjacentKey)) {
+                        territories.add(territory);
+                    }
+                }
+            }
+        }
 }

@@ -216,4 +216,34 @@ public class Controller {
         }
 
     }
+    
+    /**
+     * This method loads the tournament mode.
+     */
+    public void tournamentMode() {
+
+        Dialog<ButtonType> tournamentDialog = new Dialog<>();
+        tournamentDialog.initOwner(MainBorderPane.getScene().getWindow());
+        FXMLLoader tournamentDialogLoader = new FXMLLoader();
+        tournamentDialogLoader.setLocation(getClass().getResource("/sample/view/TournamentView.fxml"));
+        try{
+            tournamentDialog.getDialogPane().setContent(tournamentDialogLoader.load());
+        } catch (Exception e){
+            System.out.println("Cannot load the tournament dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        tournamentDialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
+        tournamentDialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = tournamentDialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.FINISH) {
+            TournamentController tcCountroller = tournamentDialogLoader.getController();
+            tcCountroller.storeTheInputsAndCreateGameInstances();
+            System.out.println("The no of player is " + TournamentMode.getInstance().getNoofPlayers());
+        } else {
+            System.out.println("Cancel button is pressed");
+        }
+    }
 }

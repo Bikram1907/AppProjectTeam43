@@ -101,6 +101,8 @@ public class Random implements Strategy {
     
      /**
      * Returns the country to start the attack from
+      * @param territoriesHeld
+     * @return country name
      */
     public String getRandomTerritoryToAttack(HashMap<String,Territories> territoriesHeld) {
 

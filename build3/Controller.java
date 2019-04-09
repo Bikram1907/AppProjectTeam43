@@ -330,4 +330,14 @@ public class Controller {
                 .getInstance().getNoofTurns());
         GameDetails.getGamedetails().getgamedetails().add(gd);
     }
+    
+    /**
+     * This method closes the application.
+     */
+    public void exitApplication() {
+
+        GameDetails.getGamedetails().clearData();
+        Stage stage = (Stage) MainBorderPane.getScene().getWindow();
+        stage.close();
+    }
 }

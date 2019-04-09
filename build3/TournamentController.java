@@ -241,6 +241,26 @@ public class TournamentController {
                 break;
         }
     }
+  
+    /**
+     * This method stores the inputs to the objects.
+     */
+    public void storeTheInputsAndCreateGameInstances() {
+
+        storePlayerCharacters();
+        TournamentMode.getInstance().setNoofMaps(Integer.parseInt(noofMaps));
+        TournamentMode.getInstance().setNoofGames(Integer.parseInt(noofGames));
+        TournamentMode.getInstance().setNoofPlayers(Integer.parseInt(noofPlayers));
+        TournamentMode.getInstance().setNoofTurns(Integer.parseInt(noofTurns));
+        TournamentMode.getInstance().setPlayerCharacters(playerCharacters);
+
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+        TournamentMode.getInstance().setResults(results);
+        for(int i = 0; i<Integer.parseInt(noofMaps); i++) {
+            TournamentMode.getInstance().getResults().add(new ArrayList<String>());
+        }
+        storeMapFiles();
+    }
 
 
 

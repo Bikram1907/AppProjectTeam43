@@ -32,6 +32,8 @@ public class GameDetails {
     private int currentPlayer = 0;
     private int mapSize;
     private List<Card> cardsList = new ArrayList<>();
+    private String gameMode;
+    private int noofTurns;
 
 
     /**

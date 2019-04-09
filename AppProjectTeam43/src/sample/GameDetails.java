@@ -161,6 +161,22 @@ public class GameDetails {
     }
     
     /**
+     * To set the game mode.
+     * @param gameMode
+     */
+    public void setGameMode(String gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    /**
+     * To set the game mode.
+     * @param noofTurns
+     */
+    public void setNoofTurns(int noofTurns) {
+        this.noofTurns = noofTurns;
+    }
+    
+    /**
      * To get the current player
      * @return currentPlayer
      */

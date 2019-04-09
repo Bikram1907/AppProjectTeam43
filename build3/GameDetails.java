@@ -34,6 +34,7 @@ public class GameDetails {
     private List<Card> cardsList = new ArrayList<>();
     private String gameMode;
     private int noofTurns;
+    private String previousGamePhase;
 
 
     /**

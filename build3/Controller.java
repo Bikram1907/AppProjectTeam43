@@ -247,6 +247,17 @@ public class Controller {
     }
     
     /**
+     * This function will initializes the player colors and loads the game.
+     */
+    public void verifyTheSavedGameAndLoadTheGame() {
+
+        int index = returnIndex(Constants.NEWGAME);
+        GameDetails.getGamedetails().IntializeColors(index);
+        GameDetails.getGamedetails().setPlayercolors(index);
+        loadGamewindow();
+    }
+    
+    /**
      * This method loads the tournament mode.
      */
     public void tournamentMode() {

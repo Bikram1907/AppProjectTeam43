@@ -139,4 +139,29 @@ public class Aggressive implements Strategy {
 
         return attackedTerritory;
     }
+    
+    
+    /**
+     * Returns the second largest country from which we fortify
+     * @return country name
+     */
+    public Territories getStrongestCountryAdjacentStrongestCountry(HashMap<String,Territories> territoriesHeld) {
+
+        strongestTerritory = getStrongestCountry(territoriesHeld);
+        Territories fromFortifyingCountry = null;
+
+        for(String key : territoriesHeld.keySet()) {
+            Territories teritory = territoriesHeld.get(key);
+            if(!teritory.getTerritorieName().equalsIgnoreCase(strongestTerritory.getTerritorieName()) &&
+                    (teritory.getArmiesHeld() > 1) && strongestTerritory.getAdjacentTerritories().contains(teritory.getTerritorieName())) {
+                if(fromFortifyingCountry == null) {
+                    fromFortifyingCountry = teritory;
+                } else if(teritory.getArmiesHeld() > fromFortifyingCountry.getArmiesHeld()) {
+                    fromFortifyingCountry = teritory;
+                }
+            }
+        }
+
+        return fromFortifyingCountry;
+    }
 }

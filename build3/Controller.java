@@ -317,4 +317,17 @@ public class Controller {
             System.out.println("Cancel button is pressed");
         }
     }
+    
+    /**
+     * Creates a game object for tournament mode.
+     * @param index
+     */
+    public void createAGameObject(int index) {
+
+        GameDetails gd = new GameDetails(TournamentMode.getInstance().getNoofPlayers(),TournamentMode
+                .getInstance().getMapFiles().get(index),TournamentMode.getInstance().getPlayerCharacters()
+                ,Constants.TOURNAMENTGAME,Constants.STARTPHASE,Constants.TOURNAMENTMODE,TournamentMode
+                .getInstance().getNoofTurns());
+        GameDetails.getGamedetails().getgamedetails().add(gd);
+    }
 }

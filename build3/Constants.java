@@ -10,6 +10,6 @@ public class Constants {
     public static final String ATTACKPHASE = "ATTACKPHASE";
     public static final String FORTIFICATIONPHASE = "FORTIFICATIONPHASE";
     public static final String ENDPHASE = "ENDPHASE";
-    public static final String WINNER = "WINER";
+    public static final String WINNER = "WINNER";
 
 }

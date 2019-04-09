@@ -101,8 +101,13 @@ public class TournamentController {
 
         noofGames = (String) noOfGamesComboBox.getSelectionModel().getSelectedItem();
     }
+  
+    /**
+     * To get the no of turns.
+     */
+    public void getnoofTurns() {
 
-  
-  
-  
+        noofTurns = (String) noOfTurnsComboBox.getSelectionModel().getSelectedItem();
+    }
+
 }

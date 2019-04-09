@@ -145,6 +145,24 @@ public class TournamentController {
                 break;
         }
     }
+  
+    /**
+     * To showor hide the map buttons.
+     * @param value
+     * @param value1
+     * @param value2
+     * @param value3
+     * @param value4
+     */
+    public void disableMapButtons(boolean value,boolean value1,boolean value2,boolean value3,boolean value4) {
+
+        chooseMapButton1.setVisible(value);
+        chooseMapButton2.setVisible(value1);
+        chooseMapButton3.setVisible(value2);
+        chooseMapButton4.setVisible(value3);
+        chooseMapButton5.setVisible(value4);
+    }
+
 
 
 }

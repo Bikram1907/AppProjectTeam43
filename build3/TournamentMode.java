@@ -11,7 +11,11 @@ public class TournamentMode {
   
   private static TournamentMode ourInstance = new TournamentMode();
 
-    public static TournamentMode getInstance() {
-        return ourInstance;
-    }
+  /**
+  * returns the object.
+  */
+  public static TournamentMode getInstance() {
+      return ourInstance;
+  }
+  
 }

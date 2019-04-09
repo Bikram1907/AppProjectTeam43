@@ -76,4 +76,12 @@ public class TournamentMode {
     public int getNoofPlayers() {
         return noofPlayers;
     }
+    
+    /**
+     * This method gets the results.
+     * @return
+     */
+    public ArrayList<ArrayList<String>> getResults() {
+        return results;
+    }
 }

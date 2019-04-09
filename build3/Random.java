@@ -84,4 +84,17 @@ public class Random implements Strategy {
             }
         }
         return "";
+    }
+    
+        /**
+     * This function returns the random territory from the player occupied territories.
+     * @param territoriesHeld
+     * @return random territory
+     */
+    public Territories getRandomTerritory(HashMap<String,Territories> territoriesHeld) {
+
+        java.util.Random r = new java.util.Random();
+        List<String> keyset = new ArrayList<>(territoriesHeld.keySet());
+        Territories randomCountry = territoriesHeld.get(keyset.get(r.nextInt(keyset.size())));
+    }
 }

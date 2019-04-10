@@ -23,6 +23,10 @@ public class Constants {
     public static final String SETTEXTFROMWHICHCOUNTRYATTACK = "Attacker Country";
     public static final String SETTEXTTOWHICHCOUNTRYATTACK = "Attacked Country";
     public static final String SOURCECOUNTRY = "SOURCECOUNTRY";
+    public static final String FORTIFYINGCOUNTRY = "FORTIFYINGCOUNTRY";
+    public static final String HUMAN = "HUMAN";
+    public static final String AGGRESSIVE = "AGGRESSIVE";
+    public static final String BENEVOLENT = "BENEVOLENT";
 
 
 

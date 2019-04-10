@@ -27,7 +27,8 @@ public class Constants {
     public static final String HUMAN = "HUMAN";
     public static final String AGGRESSIVE = "AGGRESSIVE";
     public static final String BENEVOLENT = "BENEVOLENT";
-
-
-
+    public static final String RANDON = RANDOM";
+    public static final String CHEATER = "CHEATER";
+    public static final String SINGLEMODE = "SINGLEMODE";
+    public static final String TOURNAMENTMODE = "TOURNAMENTMODE";
 }

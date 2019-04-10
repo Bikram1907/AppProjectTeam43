@@ -185,4 +185,11 @@ public class Random implements Strategy {
                 }
             }
         }
+        
+         Territories fortifyingCountry = null;
+        if(territories.size() > 1) {
+            fortifyingCountry = territories.get(random.nextInt(territories.size()));
+        }
+        return fortifyingCountry;
+    }
 }
